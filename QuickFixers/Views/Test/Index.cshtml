@@ -1,0 +1,9 @@
+﻿@model QuickFixers.Models.TestViewModel
+
+<h2>Is DataBase Connected: @Model.IsDBConnected</h2>
+@foreach (System.Data.DataRow datarowTest in Model.DbResults.Rows)
+{
+<h3>Name: @datarowTest["name"]</h3>
+}
+
+<p>Use this area to provide additional information.</p>
