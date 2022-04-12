@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuickFixers.Data
 {
-    public class Class1
+    public class ServiceProvider
     {
     }
 }
