@@ -10,7 +10,7 @@ namespace QuickFixers.Data.Models
     {
         public int UserID { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
-        public int UserType { get; set; }
+        public string UserPassword { get; set; }
+        public int UserTypeID { get; set; }
     }
 }

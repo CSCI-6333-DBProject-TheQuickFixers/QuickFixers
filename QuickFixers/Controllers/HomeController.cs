@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuickFixers.Data;
-using QuickFixers.Data.Models;
+//QuickFixers.Data is where we'd make database calls, seperate from the Web part of the project. 
+//This would hold object classes that have db data we can reference in the View/Controller.
+using QuickFixers.Data.Models; 
 using QuickFixers.Models;
 
 namespace QuickFixers.Controllers
@@ -31,16 +33,16 @@ namespace QuickFixers.Controllers
             {
                 QuickFixers.Data.Models.User loggedUser = new QuickFixers.Data.Models.User();
                 loggedUser.Email = "test@mail.com";
-                loggedUser.Password = "123";
-                loggedUser.UserType = 1;
+                loggedUser.UserPassword = "123";
+                loggedUser.UserTypeID = 1;
 
                 if ((loggedUser != null))
                 {
                     Session.Add("userid", loggedUser.UserID);
                     Session.Add("email", loggedUser.Email);
                     Session.Add("sessionGUID", Guid.NewGuid());
-                    Session.Add("pass", loggedUser.Password);
-                    Session.Add("usertypeid", loggedUser.UserType);
+                    Session.Add("pass", loggedUser.UserPassword);
+                    Session.Add("usertypeid", loggedUser.UserTypeID);
                     return RedirectToAction("Index","Home");
                 }
                 else

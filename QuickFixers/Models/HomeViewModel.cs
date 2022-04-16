@@ -12,6 +12,6 @@ namespace QuickFixers.Models
         [Required]
         public string Email { get; set; }
         [Required]
-        public string Pass { get; set; }
+        public string UserPassword { get; set; }
     }
 }
