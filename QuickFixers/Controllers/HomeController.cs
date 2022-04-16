@@ -16,7 +16,7 @@ namespace QuickFixers.Controllers
         {
             if ((Session.Keys.Count > 0) && (!string.IsNullOrEmpty(Session["sessionGUID"].ToString())))
             {
-                return RedirectToAction("Index","Test");
+                return RedirectToAction("MainPage","Home");
             }
             else
             {
@@ -54,6 +54,13 @@ namespace QuickFixers.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+        
+       [HttpGet]        
+       public ActionResult MainPage()
+        {
+            return View();
+        }
+
 
         public ActionResult Logout()
         {
