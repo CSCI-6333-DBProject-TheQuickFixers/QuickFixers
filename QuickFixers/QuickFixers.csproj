@@ -176,6 +176,7 @@
     <Content Include="Views\ServiceProvider\ScheduledServices.cshtml" />
     <Content Include="Views\ServiceProvider\PastServices.cshtml" />
     <Content Include="Views\ServiceProvider\LogOut.cshtml" />
+    <Content Include="Views\Home\MainPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
