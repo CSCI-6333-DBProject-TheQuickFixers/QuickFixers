@@ -87,7 +87,7 @@
     <Compile Include="DataBase\DBConnector.cs" />
     <Compile Include="Models\Clients.cs" />
     <Compile Include="Models\LoginAccount.cs" />
-    <Compile Include="Models\ServiceProvider.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Validations.cs" />
   </ItemGroup>
