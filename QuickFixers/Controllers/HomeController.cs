@@ -8,6 +8,8 @@ using QuickFixers.Data;
 //This would hold object classes that have db data we can reference in the View/Controller.
 using QuickFixers.Data.Models; 
 using QuickFixers.Models;
+using QuickFixers.Data.DataBase;
+using System.Data;
 
 namespace QuickFixers.Controllers
 {
@@ -31,18 +33,16 @@ namespace QuickFixers.Controllers
         {
             if (ModelState.IsValid)
             {
-                QuickFixers.Data.Models.User loggedUser = new QuickFixers.Data.Models.User();
-                loggedUser.Email = "test@mail.com";
-                loggedUser.UserPassword = "123";
-                loggedUser.UserTypeID = 1;
+                User loggedUser = new User();
+                loggedUser.Email = homeViewModelPost.Email;
+                loggedUser.UserPassword = homeViewModelPost.UserPassword;
+                DataTable selectedUser = DatabaseSelections.SelectUser(loggedUser);
 
-                if ((loggedUser != null))
+                if ((selectedUser != null) &  (selectedUser.Rows.Count > 0))
                 {
-                    Session.Add("userid", loggedUser.UserID);
-                    Session.Add("email", loggedUser.Email);
+                    Session.Add("userid", selectedUser.Rows[0]["UserID"]);
+                    Session.Add("userTypeID", selectedUser.Rows[0]["UserTypeID"]);
                     Session.Add("sessionGUID", Guid.NewGuid());
-                    Session.Add("pass", loggedUser.UserPassword);
-                    Session.Add("usertypeid", loggedUser.UserTypeID);
                     return RedirectToAction("Index","Home");
                 }
                 else

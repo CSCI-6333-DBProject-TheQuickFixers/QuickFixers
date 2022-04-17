@@ -13,7 +13,7 @@ namespace QuickFixers.Controllers
         public ActionResult Index()
         {
             TestViewModel testViewModel = new TestViewModel();
-            testViewModel.DbResults = Data.DataBase.DBConnector.GetResultsByStoredProcedure("quickFixers.selData");
+            testViewModel.DbResults = Data.DataBase.DatabaseSelections.GetResultsNoParameters("quickFixers.selData");
             testViewModel.IsDBConnected = testViewModel.DbResults != null && testViewModel.DbResults.Rows.Count > 0 ? true : false;
             return View(testViewModel);
         }
