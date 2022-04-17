@@ -8,9 +8,22 @@ using QuickFixers.Data.Models;
 using MySql.Data.MySqlClient;
 namespace QuickFixers.Data.DataBase
 {
+    /// <summary>
+    /// Database class that holds sql calls that inserts. 
+    /// Stored procedures/sql statements that need parameters are set up differently in mysql objects.
+    /// </summary>
     public static class DatabaseInserts  
     {
-        public static Tuple<Boolean, int, String> CreateUserClient(Clients newUser, decimal preferredDistance = 0)
+        /// <summary>
+        /// Sets up insertUser stored proc parameters to add a new Client.
+        /// Some fields are not shared with Clients and Service Providers but MySql paramters are not optional.
+        /// insertUser combines adding a Client or SP. InsertClient and InsertServiceProviders are call within insertUser.
+        /// Returns out parameter for success flag and new created UserID.
+        /// </summary>
+        /// <param name="newUser"></param>
+        /// <param name="preferredDistance"></param>
+        /// <returns></returns>
+        public static Tuple<Boolean, int, String> CreateUserClient(Clients newUser)
         {
             Tuple<Boolean, int, String> returnResults = new Tuple<Boolean, int, String>(false, -1,String.Empty);
             try
@@ -29,7 +42,7 @@ namespace QuickFixers.Data.DataBase
                         sqlQuery.Parameters.AddWithValue($"@PhoneNumber", newUser.PhoneNumber);
                         sqlQuery.Parameters.AddWithValue($"@Address", newUser.Address);
                         sqlQuery.Parameters.AddWithValue($"@ZipCode", newUser.ZipCode);
-                        sqlQuery.Parameters.AddWithValue($"@PreferredDistance", preferredDistance);
+                        sqlQuery.Parameters.AddWithValue($"@PreferredDistance", 0);
 
                         sqlQuery.Parameters.Add(new MySqlParameter("NewUserID", MySql.Data.MySqlClient.MySqlDbType.Int16));
                         sqlQuery.Parameters.Add(new MySqlParameter("Success", MySql.Data.MySqlClient.MySqlDbType.Int16));

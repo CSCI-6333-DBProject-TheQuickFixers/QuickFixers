@@ -9,6 +9,10 @@ using QuickFixers.Data.Models;
 
 namespace QuickFixers.Data.DataBase
 {
+    /// <summary>
+    /// Database calls that setup select type of SQL calls. 
+    /// Most are returned in a DataTable object.
+    /// </summary>
     public static class DatabaseSelections
     {
         public static DataTable GetResultsNoParameters(string storedProcedure)
@@ -42,7 +46,7 @@ namespace QuickFixers.Data.DataBase
             DataTable returnResults = new DataTable();
             try
             {
-                MySqlConnectionStringBuilder connectionStringBuilder = new MySql.Data.MySqlClient.MySqlConnectionStringBuilder();
+                MySqlConnectionStringBuilder connectionStringBuilder = new MySqlConnectionStringBuilder();
                 connectionStringBuilder = DatabaseExtensions.ToConnectionStringBuilder(connectionStringBuilder);
 
                 using (var connectionDB = new MySqlConnection(connectionStringBuilder.ToString()))
@@ -53,7 +57,7 @@ namespace QuickFixers.Data.DataBase
                         sqlQuery.Parameters.AddWithValue($"@Email", loggingUser.Email);
                         sqlQuery.Parameters.AddWithValue($"@UserPassword", loggingUser.UserPassword);
 
-                        MySqlDataAdapter da = new MySql.Data.MySqlClient.MySqlDataAdapter();
+                        MySqlDataAdapter da = new MySqlDataAdapter();
                         da.SelectCommand = sqlQuery;
                         da.Fill(returnResults);
                     }

@@ -1,4 +1,9 @@
 ﻿@model QuickFixers.Models.HomeViewModel
+
+@*The model is the object we use to save are fields put into the form.
+Each hold taghelpers that are short hand notation for html element,inputs,buttons.
+Class hold css and bootstrap stylings.*@
+
 <h2>Login</h2>
 @using (Html.BeginForm())
 {
@@ -30,8 +35,6 @@
     </div>
 }
 
-
-
-@*@section Scripts{
+@section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
-}*@
+}

@@ -28,6 +28,14 @@ namespace QuickFixers.Controllers
             }
         }
 
+        /// <summary>
+        /// This is the login information that is posted to this function.
+        /// We do a select user call from the Data project to return a matching user/password.
+        /// If true than redirect and set session values for that user to be save and used across the site.
+        /// If false then print an invalid login message and not redirect.
+        /// </summary>
+        /// <param name="homeViewModelPost"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Index(HomeViewModel homeViewModelPost)
         {

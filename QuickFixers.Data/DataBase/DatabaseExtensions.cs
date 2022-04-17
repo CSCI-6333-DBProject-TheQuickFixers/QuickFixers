@@ -8,9 +8,18 @@ using MySql.Data.MySqlClient;
 
 namespace QuickFixers.Data.DataBase
 {
+    /// <summary>
+    /// This class holds the basic connection and formatting with the database.
+    /// Also contains formatters if a stored proc or SQL string needs any validation.
+    /// </summary>
     public static class DatabaseExtensions
     {
         public static readonly string DataBase = "quickFixers";
+        /// <summary>
+        /// Set the connection's url, port and creditials to connect to the database.
+        /// </summary>
+        /// <param name="connectionStringBuilderToSet"></param>
+        /// <returns></returns>
         public static MySqlConnectionStringBuilder ToConnectionStringBuilder( MySqlConnectionStringBuilder connectionStringBuilderToSet)
         {
             string ServerEndPoint = "db-quickfixers.cffhy94odwbg.us-east-1.rds.amazonaws.com";
