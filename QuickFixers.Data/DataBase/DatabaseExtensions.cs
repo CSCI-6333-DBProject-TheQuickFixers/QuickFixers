@@ -16,7 +16,7 @@ namespace QuickFixers.Data.DataBase
     {
         public static readonly string DataBase = "quickFixers";
         /// <summary>
-        /// Set the connection's url, port and creditials to connect to the database.
+        /// Set the connection's url, port and credentials to connect to the database.
         /// </summary>
         /// <param name="connectionStringBuilderToSet"></param>
         /// <returns></returns>
