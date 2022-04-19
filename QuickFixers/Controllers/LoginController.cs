@@ -70,6 +70,7 @@ namespace QuickFixers.Controllers
         [HttpGet]        
         public ActionResult Register()
         {
+            ViewBag.Message = string.Empty;
             return View(new LoginViewModel());
         }
 
@@ -78,7 +79,30 @@ namespace QuickFixers.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                IUser newUser = newLoginViewModel.UserTypeID == 1 ? new Clients() : null; //replace null with service provider
+                
+                #region Populate object to pass in DB call
+                newUser.UserTypeID = newLoginViewModel.UserTypeID;
+                newUser.Email = newLoginViewModel.Email;
+                newUser.UserPassword = newLoginViewModel.UserPassword;
+                newUser.Name = newLoginViewModel.Name;
+                newUser.PhoneNumber = newLoginViewModel.PhoneNumber;
+                newUser.ZipCode = newLoginViewModel.ZipCode;
+                newUser.Address = newLoginViewModel.Address;
+                #endregion
+
+                if (newUser.UserTypeID == 2) {newUser.PreferredDistance = newLoginViewModel.PreferredDistance;}
+
+                Tuple<Int32,Int32, String> newUserResults = DatabaseInserts.CreateUserClient(newUser);
+                if (newUserResults.Item1 == 1)
+                {                     
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                   ViewBag.Message("Failed to create user, please try again");
+                   return RedirectToAction("Register", "Login");
+                }
             }
             else
             {
