@@ -13,7 +13,9 @@ namespace QuickFixers.Data.Models
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public int ZipCode { get; set; }
-        public decimal PreferredDistance { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int ServiceProviderID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private decimal defaultPreferredDistance = 0;
+        public decimal PreferredDistance { get => defaultPreferredDistance; set => defaultPreferredDistance = 0; }
+        private int defaultServiceProviderID = -1;
+        public int ServiceProviderID { get => defaultServiceProviderID; set => defaultServiceProviderID = -1; }
     }
 }

@@ -91,8 +91,6 @@ namespace QuickFixers.Controllers
                 newUser.Address = newLoginViewModel.Address;
                 #endregion
 
-                if (newUser.UserTypeID == 2) {newUser.PreferredDistance = newLoginViewModel.PreferredDistance;}
-
                 Tuple<Int32,Int32, String> newUserResults = DatabaseInserts.CreateUserClient(newUser);
                 if (newUserResults.Item1 == 1)
                 {                     

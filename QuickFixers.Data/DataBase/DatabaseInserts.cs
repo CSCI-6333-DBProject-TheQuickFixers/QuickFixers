@@ -42,16 +42,8 @@ namespace QuickFixers.Data.DataBase
                         sqlQuery.Parameters.AddWithValue($"@PhoneNumber", newUser.PhoneNumber);
                         sqlQuery.Parameters.AddWithValue($"@Address", newUser.Address);
                         sqlQuery.Parameters.AddWithValue($"@ZipCode", newUser.ZipCode);
-
-                        if(newUser.UserTypeID == 1)
-                        {
-                            sqlQuery.Parameters.AddWithValue($"@PreferredDistance", 0);
-                        }
-                        else
-                        {
-                            sqlQuery.Parameters.AddWithValue($"@PreferredDistance", newUser.PreferredDistance);
-                        }
-
+                        sqlQuery.Parameters.AddWithValue($"@PreferredDistance", newUser.PreferredDistance);
+                        sqlQuery.Parameters.AddWithValue($"UName", newUser.Name);   
                         sqlQuery.Parameters.Add(new MySqlParameter("NewUserID", MySqlDbType.Int32));
                         sqlQuery.Parameters.Add(new MySqlParameter("Success", MySqlDbType.Int32));
 
