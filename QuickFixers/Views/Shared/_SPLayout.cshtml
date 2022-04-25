@@ -20,18 +20,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Dashboard", "Index", "ServiceProvider")</li>
+                    <li>@Html.ActionLink("Main", "Index", "ServiceProvider")</li>
                     <li>@Html.ActionLink("Work Schedule", "WorkSchedule", "ServiceProvider")</li>
                     <li>@Html.ActionLink("Invoices", "Invoices", "ServiceProvider")</li>
                     <li>@Html.ActionLink("Services Offered", "ServicesOffered", "ServiceProvider")</li>
                     <li>@Html.ActionLink("Scheduled Services", "ScheduledServices", "ServiceProvider")</li>
                     <li>@Html.ActionLink("Past Services", "PastServices", "ServiceProvider")</li>
-                    <li>@Html.ActionLink("Log Out", "LogOut", "ServiceProvider")</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container mt-3 mb-3">
         @RenderBody()
         <hr />
         <footer>

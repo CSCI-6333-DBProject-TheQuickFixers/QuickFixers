@@ -126,7 +126,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\SPView.cs" />
+    <Compile Include="Models\ServiceProvider.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\TestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -175,7 +175,6 @@
     <Content Include="Views\ServiceProvider\ServicesOffered.cshtml" />
     <Content Include="Views\ServiceProvider\ScheduledServices.cshtml" />
     <Content Include="Views\ServiceProvider\PastServices.cshtml" />
-    <Content Include="Views\ServiceProvider\LogOut.cshtml" />
     <Content Include="Views\Home\MainPage.cshtml" />
   </ItemGroup>
   <ItemGroup>

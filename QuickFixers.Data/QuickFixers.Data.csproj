@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\DBConnector.cs" />
+    <Compile Include="Models\ServiceProvider.cs" />
     <Compile Include="Models\Clients.cs" />
     <Compile Include="Models\LoginAccount.cs" />
     <Compile Include="Models\User.cs" />

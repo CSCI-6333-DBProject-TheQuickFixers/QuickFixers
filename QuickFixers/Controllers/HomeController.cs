@@ -32,9 +32,14 @@ namespace QuickFixers.Controllers
             if (ModelState.IsValid)
             {
                 QuickFixers.Data.Models.User loggedUser = new QuickFixers.Data.Models.User();
-                loggedUser.Email = "test@mail.com";
+                //loggedUser.Email = "test@mail.com";
+                //loggedUser.UserPassword = "123";
+                //loggedUser.UserTypeID = 1;
+
+                //Test Service Provider Will Delete After Testing
+                loggedUser.Email = "sptestmatt@email.com";
                 loggedUser.UserPassword = "123";
-                loggedUser.UserTypeID = 1;
+                loggedUser.UserTypeID = 2;
 
                 if ((loggedUser != null))
                 {
@@ -43,7 +48,9 @@ namespace QuickFixers.Controllers
                     Session.Add("sessionGUID", Guid.NewGuid());
                     Session.Add("pass", loggedUser.UserPassword);
                     Session.Add("usertypeid", loggedUser.UserTypeID);
-                    return RedirectToAction("Index","Home");
+                    //return RedirectToAction("Index","Home");
+                    //Redirect to Service Provider Index Will Delete After Testing
+                    return RedirectToAction("Index", "ServiceProvider");
                 }
                 else
                 {
