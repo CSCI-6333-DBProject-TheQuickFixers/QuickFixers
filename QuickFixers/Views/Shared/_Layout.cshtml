@@ -1,9 +1,13 @@
 ﻿<!DOCTYPE html>
+@*This is the nav bar that will display across the site in any page.
+Buttons related to loggin users are validated and filtered.
+Buttons related to usertype also are filtered.*@
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Come Get Your Fix!</title>
+    <link rel="shortcut icon" type="image/ico" href="~/Images/builderIcon1.png">
+    <title>Come Get Your Fix!</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -16,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("QuickFix", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("QuickFixers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -25,7 +29,12 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["sessionGuid"]))))
                     {
-                        <li>@Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @style = "color:rgb(52, 235, 177);font-weight:bold;font-size:15px;" })</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Register", "Register", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                        <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
                     }
                 </ul>
             </div>
@@ -35,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - QuickFixers</p>
         </footer>
     </div>
 
