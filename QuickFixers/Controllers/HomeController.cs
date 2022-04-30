@@ -31,7 +31,7 @@ namespace QuickFixers.Controllers
         {
             if (ModelState.IsValid)
             {
-                QuickFixers.Data.Models.User loggedUser = new QuickFixers.Data.Models.User();
+                User loggedUser = new User();
                 loggedUser.Email = "test@mail.com";
                 loggedUser.UserPassword = "123";
                 loggedUser.UserTypeID = 1;
