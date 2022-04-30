@@ -8,6 +8,8 @@ using QuickFixers.Data;
 //This would hold object classes that have db data we can reference in the View/Controller.
 using QuickFixers.Data.Models; 
 using QuickFixers.Models;
+using QuickFixers.Data.DataBase;
+using System.Data;
 
 namespace QuickFixers.Controllers
 {
@@ -16,9 +18,10 @@ namespace QuickFixers.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+
             if ((Session.Keys.Count > 0) && (!string.IsNullOrEmpty(Session["sessionGUID"].ToString())))
             {
-                return RedirectToAction("MainPage","Home");
+                return View();//goes to logged in version
             }
             else
             {
