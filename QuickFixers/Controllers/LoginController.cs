@@ -79,7 +79,7 @@ namespace QuickFixers.Controllers
         {
             if (ModelState.IsValid)
             {
-                IUser newUser = newLoginViewModel.UserTypeID == 1 ? new Clients() : null; //replace null with service provider
+                IUser newUser = newLoginViewModel.UserTypeID == 1 ? new Client() : null; //replace null with service provider
                 
                 #region Populate object to pass in DB call
                 newUser.UserTypeID = newLoginViewModel.UserTypeID;
