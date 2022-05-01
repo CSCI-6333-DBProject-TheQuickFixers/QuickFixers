@@ -27,6 +27,15 @@ Buttons related to usertype also are filtered.*@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["UserTypeID"]))) && Convert.ToString(Session["UserTypeID"]) == "1")
+                    {
+                        <li>@Html.ActionLink("Customer Welcome Page", "Index", "Client")</li>
+                        <li>@Html.ActionLink("Search Services", "Services", "Client")</li>
+                        <li>@Html.ActionLink("Scheduled Services", "ScheduledServices", "Client")</li>
+                        <li>@Html.ActionLink("Past Services", "PastServices", "Client")</li>
+                    }
+
+
                     @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["sessionGuid"]))))
                     {
                         <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
