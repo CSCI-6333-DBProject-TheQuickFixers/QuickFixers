@@ -53,7 +53,16 @@ namespace QuickFixers.Controllers
                     Session.Add("userid", selectedUser.Rows[0]["UserID"]);
                     Session.Add("userTypeID", selectedUser.Rows[0]["UserTypeID"]);
                     Session.Add("sessionGUID", Guid.NewGuid());
-                    return RedirectToAction("Index", "Home");
+
+                    //Successful Login Redirect to ServiceProviderHome
+                    if ((int)Session["userTypeID"] == 2)
+                    {
+                        return RedirectToAction("Index", "ServiceProvider");
+                    }
+                    else 
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
@@ -79,8 +88,18 @@ namespace QuickFixers.Controllers
         {
             if (ModelState.IsValid)
             {
-                IUser newUser = newLoginViewModel.UserTypeID == 1 ? new Clients() : null; //replace null with service provider
-                
+                //IUser newUser = newLoginViewModel.UserTypeID == 1 ? new Clients() : null; //replace null with service provider
+
+                IUser newUser;
+                if (newLoginViewModel.UserTypeID == 1)
+                {
+                    newUser = new Clients();
+                }
+                else
+                {
+                    newUser = new ServiceProvider();
+                }
+
                 #region Populate object to pass in DB call
                 newUser.UserTypeID = newLoginViewModel.UserTypeID;
                 newUser.Email = newLoginViewModel.Email;
@@ -89,6 +108,7 @@ namespace QuickFixers.Controllers
                 newUser.PhoneNumber = newLoginViewModel.PhoneNumber;
                 newUser.ZipCode = newLoginViewModel.ZipCode;
                 newUser.Address = newLoginViewModel.Address;
+                newUser.PreferredDistance = newLoginViewModel.PreferredDistance;
                 #endregion
 
                 Tuple<Int32,Int32, String> newUserResults = DatabaseInserts.CreateUserClient(newUser);

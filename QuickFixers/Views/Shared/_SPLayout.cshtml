@@ -26,6 +26,10 @@
                     <li>@Html.ActionLink("Services Offered", "ServicesOffered", "ServiceProvider")</li>
                     <li>@Html.ActionLink("Scheduled Services", "ScheduledServices", "ServiceProvider")</li>
                     <li>@Html.ActionLink("Past Services", "PastServices", "ServiceProvider")</li>
+                    @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["sessionGuid"]))))
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                    }
                 </ul>
             </div>
         </div>

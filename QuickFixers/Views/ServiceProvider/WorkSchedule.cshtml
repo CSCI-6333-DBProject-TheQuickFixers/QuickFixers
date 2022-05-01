@@ -1,5 +1,5 @@
 ﻿
-@model QuickFixers.Models.ServiceProvider
+@model QuickFixers.Models.ServiceProviderViewModel
 
 @{
     ViewBag.Title = "Work Schedule";
@@ -12,40 +12,43 @@
     <table class="table table-bordered table-responsive table-hover">
         <thead>
             <tr>
-             @{
+                @{
 
-                 foreach (var header in THeaders)
-                 {
+                    foreach (var header in THeaders)
+                    {
 
-                          <th>
-                              @header
-                          </th>           
-
-
-
-                 }
+                        <th>
+                            @header
+                        </th>
 
 
-               }
 
-             </tr>
+
+
+
+
+                    }
+
+
+                }
+
+            </tr>
         </thead>
-        @{ 
+        @{
             if (Model.DbResults != null)
             {
                 foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
                 {
-                <tr>
-                    <td>@DataTest["DayoftheWeek"]</td>
-                    <td>@DataTest["StartTime"]</td>
-                    <td>@DataTest["EndTime"]</td>
-                    <td>@DataTest["TimeZone"]</td>
-                </tr>
+                    <tr>
+                        <td>@DataTest["DayoftheWeek"]</td>
+                        <td>@DataTest["StartTime"]</td>
+                        <td>@DataTest["EndTime"]</td>
+                        <td>@DataTest["TimeZone"]</td>
+                    </tr>
                 }
             }
         }
         <tbody>
-
         </tbody>
 
     </table>

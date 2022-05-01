@@ -8,6 +8,8 @@ namespace QuickFixers.Data.Models
 {
    public class Clients: User, IUser
     {
+
+        private int defaultClientID = -1;
         public int ClientID { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }

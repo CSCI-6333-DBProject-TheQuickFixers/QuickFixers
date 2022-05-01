@@ -87,7 +87,6 @@
     <Compile Include="DataBase\DatabaseInserts.cs" />
     <Compile Include="DataBase\DatabaseSelections.cs" />
     <Compile Include="DataBase\DatabaseExtensions.cs" />
-    <Compile Include="DataBase\DBConnector.cs" />
     <Compile Include="Models\ServiceProvider.cs" />
     <Compile Include="Models\Clients.cs" />
     <Compile Include="Models\IUser.cs" />

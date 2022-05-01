@@ -6,15 +6,24 @@ using System.Threading.Tasks;
 
 namespace QuickFixers.Data.Models
 {
-    public class ServiceProvider
+    public class ServiceProvider: User, IUser
     {
-        public int ServiceProviderId { get; set; }
-        public int UserId { get; set; }
+        public int ServiceProviderID { get; set; }
+
+        //Set Default ClientID for IUser
+        private int defaultClientID = -1;
+        public int ClientID { get => defaultClientID; set => defaultClientID = -1; }
+
+        //public int UserId { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public int ZipCode { get; set; }
-        public float PreferredDistance { get; set; }
-        public string UName { get; set; }
+
+        //private decimal defaultPreferredDistance = 0;
+
+        //private int defaultServiceProviderID = -1;
+        public decimal PreferredDistance { get; set; }
+        public string Name { get; set; }
 
     }
 }
