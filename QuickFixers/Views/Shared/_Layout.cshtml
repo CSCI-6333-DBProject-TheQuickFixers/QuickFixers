@@ -2,7 +2,7 @@
 @*This is the nav bar that will display across the site in any page.
 Buttons related to loggin users are validated and filtered.
 Buttons related to usertype also are filtered.*@
-<html>
+<html> 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,44 +12,49 @@ Buttons related to usertype also are filtered.*@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("QuickFixers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div style="background-image:url('../Images/mainBackground2.jpg'); background-repeat:no-repeat; background-size:cover">
+
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: cornflowerblue;opacity:0.9; border:hidden">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("QuickFixers", "Index", "Home", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:25px;" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                        @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["sessionGuid"]))))
+                        {
+                            <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Register", "Register", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                            <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                        }
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["sessionGuid"]))))
-                    {
-                        <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Register", "Register", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
-                        <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
-                    }
-                </ul>
-            </div>
+
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - QuickFixers</p>
-        </footer>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p style="color:black"><b>&copy;@DateTime.Now.Year - QuickFixers</b></p>
+            </footer>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
