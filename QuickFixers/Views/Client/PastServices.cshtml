@@ -1,15 +1,12 @@
 ﻿@model IEnumerable<QuickFixers.Data.Models.ScheduledService>
 
 @{
-    ViewBag.Title = "PastServices";
+    ViewBag.Title = "Past Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>PastServices</h2>
+<h2>Past Services</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -46,11 +43,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.serviceAddress)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.scheduledServiceID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.scheduledServiceID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.scheduledServiceID })
         </td>
     </tr>
 }
