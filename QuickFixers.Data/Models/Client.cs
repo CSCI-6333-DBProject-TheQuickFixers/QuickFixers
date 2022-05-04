@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuickFixers.Data.Models
 {
-   public class Clients: User, IUser
+   public class Client: User, IUser
     {
         public int ClientID { get; set; }
         public string Name { get; set; }

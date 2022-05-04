@@ -1,0 +1,50 @@
+﻿@model IEnumerable<QuickFixers.Data.Models.ScheduledService>
+
+@{
+    ViewBag.Title = "Past Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Past Services</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceProviderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clientID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.servicesOfferedID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceProviderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.clientID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.servicesOfferedID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceAddress)
+        </td>
+    </tr>
+}
+
+</table>

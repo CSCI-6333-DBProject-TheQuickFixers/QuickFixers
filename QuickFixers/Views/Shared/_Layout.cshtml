@@ -10,6 +10,21 @@ Buttons related to usertype also are filtered.*@
     <title>Come Get Your Fix!</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .navbar-text-lg {
+            color: black !important;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .navbar-text-med {
+            color: black !important;
+            font-weight: bold;
+            font-size: 15px;
+        }
+    </style>
+
 </head>
 <body>
     <div style="background-image:url('../Images/mainBackground2.jpg'); background-repeat:no-repeat; background-size:cover">
@@ -22,21 +37,40 @@ Buttons related to usertype also are filtered.*@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("QuickFixers", "Index", "Home", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:25px;" })
+                    @Html.ActionLink("QuickFixers", "Index", "Home", new { area = "" }, new { @class = "navbar-text-lg" })
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
-                        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
+
+                        @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["UserTypeID"]))) && Convert.ToString(Session["UserTypeID"]) == "1")
+                        {
+                            <li>@Html.ActionLink("Customer Welcome Page", "Index", "Client", new { area = "" }, new { @class = "navbar-text-med"})</li>
+                            <li>@Html.ActionLink("Search Services", "Services", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Scheduled Services", "ScheduledServices", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Past Services", "PastServices", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                        }
+
+                        @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["UserTypeID"]))) && Convert.ToString(Session["UserTypeID"]) == "2")
+                        {
+                            <li>@Html.ActionLink("Main", "Index", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Work Schedule", "WorkSchedule", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Invoices", "Invoices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Services Offered", "ServicesOffered", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Scheduled Services", "ScheduledServices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Past Services", "PastServices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                        }
+
                         @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["sessionGuid"]))))
                         {
-                            <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "navbar-text-med" })</li>
                         }
                         else
                         {
-                            <li>@Html.ActionLink("Register", "Register", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
-                            <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @style = "color:black;font-weight:bold;font-size:15px;" })</li>
+                            <li>@Html.ActionLink("Register", "Register", "Login", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "navbar-text-med" })</li>
                         }
                     </ul>
                 </div>
