@@ -48,11 +48,8 @@ namespace QuickFixers.Controllers
                 loggedUser.UserPassword = homeViewModelPost.UserPassword;
                 DataTable selectedUser = DatabaseSelections.SelectUser(loggedUser);
 
-                if ((selectedUser != null) & (selectedUser.Rows.Count > 0))
-                {
-                    Session.Add("userid", selectedUser.Rows[0]["UserID"]);
-                    Session.Add("userTypeID", selectedUser.Rows[0]["UserTypeID"]);
-                    Session.Add("sessionGUID", Guid.NewGuid());
+                if (CreateSession(selectedUser))
+                { 
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -91,20 +88,35 @@ namespace QuickFixers.Controllers
                 newUser.Address = newLoginViewModel.Address;
                 #endregion
 
-                Tuple<Int32,Int32, String> newUserResults = DatabaseInserts.CreateUserClient(newUser);
+                Tuple<Int32, Int32, String> newUserResults = DatabaseInserts.CreateUserClient(newUser);
                 if (newUserResults.Item1 == 1)
-                {                     
+                {
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                   ViewBag.Message("Failed to create user, please try again");
-                   return RedirectToAction("Register", "Login");
+                    ViewBag.Message("Failed to create user, please try again");
+                    return RedirectToAction("Register", "Login");
                 }
             }
             else
             {
                 return RedirectToAction("Register","Login");
+            }
+        }
+
+        protected Boolean CreateSession(DataTable selectedUser) 
+        {
+            if ((selectedUser != null) & (selectedUser.Rows.Count > 0))
+            {
+                Session.Add("userid", selectedUser.Rows[0]["UserID"]);
+                Session.Add("userTypeID", selectedUser.Rows[0]["UserTypeID"]);
+                Session.Add("sessionGUID", Guid.NewGuid());
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
