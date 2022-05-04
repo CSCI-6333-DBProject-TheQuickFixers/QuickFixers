@@ -46,7 +46,13 @@ namespace QuickFixers.Controllers
                 User loggedUser = new User();
                 loggedUser.Email = homeViewModelPost.Email;
                 loggedUser.UserPassword = homeViewModelPost.UserPassword;
-                DataTable selectedUser = DatabaseSelections.SelectUser(loggedUser);
+                Dictionary<string,string> spParameters = new Dictionary<string, string>();
+
+                // Add parameter names and values to dictionary
+                spParameters.Add("@Email", homeViewModelPost.Email);
+                spParameters.Add("@UserPassword", homeViewModelPost.UserPassword);
+
+                DataTable selectedUser = DatabaseSelections.Select("quickFixers.selectUser", spParameters);
 
                 if ((selectedUser != null) & (selectedUser.Rows.Count > 0))
                 {
