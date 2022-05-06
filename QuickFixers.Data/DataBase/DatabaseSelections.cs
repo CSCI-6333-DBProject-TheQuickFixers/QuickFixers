@@ -41,6 +41,39 @@ namespace QuickFixers.Data.DataBase
             return dataBaseResults;
         }
 
+        public static DataTable Select(String storedProcedure, Dictionary<string,string> parameters)
+        {
+            DataTable returnResults = new DataTable();
+            try
+            {
+                MySqlConnectionStringBuilder connectionStringBuilder = new MySqlConnectionStringBuilder();
+                connectionStringBuilder = DatabaseExtensions.ToConnectionStringBuilder(connectionStringBuilder);
+
+                using (var connectionDB = new MySqlConnection(connectionStringBuilder.ToString()))
+                {
+                    using (var sqlQuery = new MySqlCommand(storedProcedure, connectionDB))
+                    {
+                        sqlQuery.CommandType = CommandType.StoredProcedure;
+
+                        foreach (var item in parameters)
+                        {
+                            sqlQuery.Parameters.AddWithValue(item.Key, item.Value);
+                        }
+
+                        MySqlDataAdapter da = new MySqlDataAdapter();
+                        da.SelectCommand = sqlQuery;
+                        da.Fill(returnResults);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnResults = new DataTable();
+                Console.WriteLine(ex.ToString());
+            }
+            return returnResults;
+        }
+
         public static DataTable SelectUser(User loggingUser)
         {
             DataTable returnResults = new DataTable();

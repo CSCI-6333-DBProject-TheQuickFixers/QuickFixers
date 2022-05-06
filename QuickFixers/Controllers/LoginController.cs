@@ -46,7 +46,13 @@ namespace QuickFixers.Controllers
                 User loggedUser = new User();
                 loggedUser.Email = homeViewModelPost.Email;
                 loggedUser.UserPassword = homeViewModelPost.UserPassword;
-                DataTable selectedUser = DatabaseSelections.SelectUser(loggedUser);
+                Dictionary<string,string> spParameters = new Dictionary<string, string>();
+
+                // Add parameter names and values to dictionary
+                spParameters.Add("@Email", homeViewModelPost.Email);
+                spParameters.Add("@UserPassword", homeViewModelPost.UserPassword);
+
+                DataTable selectedUser = DatabaseSelections.Select("quickFixers.selectUser", spParameters);
 
                 if (CreateSession(selectedUser))
                 { 
@@ -76,7 +82,7 @@ namespace QuickFixers.Controllers
         {
             if (ModelState.IsValid)
             {
-                IUser newUser = newLoginViewModel.UserTypeID == 1 ? new Clients() : null; //replace null with service provider
+                IUser newUser = newLoginViewModel.UserTypeID == 1 ? new Client() : null; //replace null with service provider
                 
                 #region Populate object to pass in DB call
                 newUser.UserTypeID = newLoginViewModel.UserTypeID;
