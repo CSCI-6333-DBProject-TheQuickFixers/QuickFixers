@@ -97,7 +97,7 @@ namespace QuickFixers.Controllers
                 IUser newUser;
                 if (newLoginViewModel.UserTypeID == 1)
                 {
-                    newUser = new Clients();
+                    newUser = new Client();
                 }
                 else
                 {
