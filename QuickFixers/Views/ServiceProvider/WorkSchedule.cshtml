@@ -1,0 +1,44 @@
+﻿
+@model QuickFixers.Models.ServiceProviderViewModel
+
+@{
+    ViewBag.Title = "Work Schedule";
+    Layout = "~/Views/Shared/_SPLayout.cshtml";
+    string[] THeaders = new string[] { "WeekDay", "StartTime", "EndTime", "Timezone" };
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="table">
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                @{
+                    foreach (var header in THeaders)
+                    {
+                        <th>
+                            @header
+                        </th>
+                    }
+                }
+            </tr>
+        </thead>
+        @{
+            if (Model.DbResults != null)
+            {
+                foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
+                {
+                    <tr>
+                        <td>@DataTest["DayoftheWeek"]</td>
+                        <td>@DataTest["StartTime"]</td>
+                        <td>@DataTest["EndTime"]</td>
+                        <td>@DataTest["TimeZone"]</td>
+                    </tr>
+                }
+            }
+        }
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+
