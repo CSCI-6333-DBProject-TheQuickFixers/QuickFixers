@@ -119,7 +119,6 @@ namespace QuickFixers.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("Registration Failed", "Please Try again");
                     return View("Error");
                 }
             }
