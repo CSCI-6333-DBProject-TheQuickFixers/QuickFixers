@@ -8,15 +8,15 @@ namespace QuickFixers.Data.Models
 {
     public class ScheduledService
     {
-        public int scheduledServiceID { get; set; }
-        public int serviceProviderID { get; set; }
-        public string serviceProviderName { get; set; }
-        public int clientID { get; set; }
-        public string clientName { get; set; }
-        public int servicesOfferedID { get; set; }
-        public string serviceTypeName { get; set; }
-        public DateTime serviceDate { get; set; }
-        public string serviceAddress { get; set; }
-        public double serviceFee { get; set; }
+        public int ScheduledServiceID { get; set; }
+        public int ServiceProviderID { get; set; }
+        public string ServiceProviderName { get; set; }
+        public int ClientID { get; set; }
+        public string ClientName { get; set; }
+        public int ServicesOfferedID { get; set; }
+        public string ServiceTypeName { get; set; }
+        public DateTime ServiceDate { get; set; }
+        public string ServiceAddress { get; set; }
+        public double ServiceFee { get; set; }
     }
 }
