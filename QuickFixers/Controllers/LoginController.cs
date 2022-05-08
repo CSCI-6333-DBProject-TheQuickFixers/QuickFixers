@@ -112,20 +112,20 @@ namespace QuickFixers.Controllers
                 newUser.PreferredDistance = newLoginViewModel.PreferredDistance;
                 #endregion
 
-                Tuple<Int32, Int32, String> newUserResults = DatabaseInserts.CreateUserClient(newUser);
+                Tuple<Int32, Int32, String> newUserResults = DatabaseInserts.CreateUserClient(newUser);           
                 if (newUserResults.Item1 == 1)
                 {
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ViewBag.Message("Failed to create user, please try again");
-                    return RedirectToAction("Register", "Login");
+                    ModelState.AddModelError("Registration Failed", "Please Try again");
+                    return View("Error");
                 }
             }
             else
             {
-                return RedirectToAction("Register","Login");
+                return View("Error");
             }
         }
 
