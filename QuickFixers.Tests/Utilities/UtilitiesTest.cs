@@ -21,9 +21,9 @@ namespace QuickFixers.Tests.Utilities
         [TestMethod] public void TestHash(string passwordString)
         {
             Console.WriteLine(passwordString);
-            string expectedHash = Validations.ToEncriptedString(passwordString);
+            string expectedHash = Validations.ToEncryptedString(passwordString);
             Console.WriteLine(expectedHash);
-            string resultHash = Validations.ToEncriptedString(passwordString);
+            string resultHash = Validations.ToEncryptedString(passwordString);
             Console.WriteLine(resultHash);
 
             Assert.AreEqual(expectedHash, expectedHash);

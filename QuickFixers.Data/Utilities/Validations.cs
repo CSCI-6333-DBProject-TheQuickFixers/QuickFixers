@@ -15,7 +15,7 @@ namespace QuickFixers.Data.Utilities
             return sqlField.Replace("'", "''");
         }
 
-        public static string ToEncriptedString(this string passwordText)
+        public static string ToEncryptedString(this string passwordText)
         {
             string hashPassword = string.Empty;
             SHA1CryptoServiceProvider cyptoProvider = new SHA1CryptoServiceProvider();

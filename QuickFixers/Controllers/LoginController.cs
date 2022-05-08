@@ -50,7 +50,7 @@ namespace QuickFixers.Controllers
 
                 // Add parameter names and values to dictionary
                 spParameters.Add("@Email", homeViewModelPost.Email);
-                spParameters.Add("@UserPassword", homeViewModelPost.UserPassword.ToEncriptedString());
+                spParameters.Add("@UserPassword", homeViewModelPost.UserPassword.ToEncryptedString());
 
                 DataTable selectedUser = DatabaseSelections.Select("quickFixers.selectUser", spParameters);
 
@@ -104,7 +104,7 @@ namespace QuickFixers.Controllers
                 #region Populate object to pass in DB call
                 newUser.UserTypeID = newLoginViewModel.UserTypeID;
                 newUser.Email = newLoginViewModel.Email;
-                newUser.UserPassword = newLoginViewModel.UserPassword.ToEncriptedString();
+                newUser.UserPassword = newLoginViewModel.UserPassword.ToEncryptedString();
                 newUser.Name = newLoginViewModel.Name;
                 newUser.PhoneNumber = newLoginViewModel.PhoneNumber;
                 newUser.ZipCode = newLoginViewModel.ZipCode;
