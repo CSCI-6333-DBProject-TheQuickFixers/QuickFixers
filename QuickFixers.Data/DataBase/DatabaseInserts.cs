@@ -65,5 +65,39 @@ namespace QuickFixers.Data.DataBase
             }
             return returnResults;
         }
+
+        public static Tuple<Int32, String> Insert(String storedProcedure, Dictionary<string, string> parameters, Dictionary<string,string> outParameters)
+        {
+            Tuple<Int32, String> returnResults = new Tuple<Int32, String>(0, String.Empty);
+            try
+            {
+                MySqlConnectionStringBuilder connectionStringBuilder = new MySqlConnectionStringBuilder();
+                connectionStringBuilder = DatabaseExtensions.ToConnectionStringBuilder(connectionStringBuilder);
+
+                using (var connectionDB = new MySqlConnection(connectionStringBuilder.ToString()))
+                {
+                    using (var sqlQuery = new MySqlCommand(storedProcedure, connectionDB))
+                    {
+                        sqlQuery.CommandType = CommandType.StoredProcedure;
+
+                        parameters.AsParallel().ForAll(p => sqlQuery.Parameters.AddWithValue(p.Key,p.Value));
+                        outParameters.AsParallel().ForAll(p => sqlQuery.Parameters.AddWithValue(p.Key, p.Value));
+                        outParameters.AsParallel().ForAll(p => sqlQuery.Parameters[p.Key].Direction = ParameterDirection.Output);
+
+                        MySqlDataAdapter da = new MySqlDataAdapter();
+                        connectionDB.Open();
+                        sqlQuery.ExecuteNonQuery();
+                        connectionDB.Close();
+                        returnResults = new Tuple<Int32,String>((Int32)sqlQuery.Parameters[outParameters.LastOrDefault().Key].Value, string.Empty);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnResults = new Tuple<Int32,String>(0, ex.ToString());
+                Console.WriteLine(ex.ToString());
+            }
+            return returnResults;
+        }
     }
 }

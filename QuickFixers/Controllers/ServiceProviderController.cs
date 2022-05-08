@@ -107,5 +107,42 @@ namespace QuickFixers.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult ServiceReview()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ServiceReview(ServiceReviewModel serviceReviewModelPost)
+        {
+            DataTable invoices = new DataTable();
+            DataTable payments = new DataTable();
+            
+            ServiceReview serviceReview = new ServiceReview();
+
+            serviceReview.ServiceProviderID = 0;
+            serviceReview.PaymentID = 0;
+            serviceReview.ServiceTypeID = 0;
+
+            serviceReview.BriefReview = serviceReviewModelPost.BriefReview;
+            serviceReview.Rating = serviceReviewModelPost.Rating;
+            
+            Dictionary<string,string> insertServiceReviewParameters = new Dictionary<string,string>();
+            Dictionary<string, string> insertOutParameters = new Dictionary<string, string>();
+
+            Tuple<int, string> insertResults = DatabaseInserts.Insert("quickFixers.InsertServiceReview", insertServiceReviewParameters, insertOutParameters);
+
+
+            if(insertResults.Item1 > -1)
+            {
+                return RedirectToAction("Index", "ServiceProvider");
+            }
+            else
+            {
+                return RedirectToAction("ServiceReview", "ServiceProvider");
+            }
+        }
+
     }
 }

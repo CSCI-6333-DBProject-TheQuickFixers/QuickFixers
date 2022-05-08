@@ -89,10 +89,10 @@
     <Compile Include="DataBase\DatabaseExtensions.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ServiceProvider.cs" />
-    <Compile Include="Models\Clients.cs" />
     <Compile Include="Models\IUser.cs" />
     <Compile Include="Models\LoginAccount.cs" />
     <Compile Include="Models\ScheduledService.cs" />
+    <Compile Include="Models\ServiceReview.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
