@@ -3,120 +3,122 @@
 @*The model is the object we use to save are fields put into the form.
     Each hold taghelpers that are short hand notation for html element,inputs,buttons.
     Class hold css and bootstrap stylings.*@
+<link href="~/Content/mainStyle.css" rel="stylesheet" />
+<h2 class="pageName">Register</h2>
+<h3>@ViewBag.Message</h3> 
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-<h2>Register</h2>
-<h3>@ViewBag.Message</h3>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                @Html.Label("Email Address", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+                @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
 
+            <div class="form-group">
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                @Html.Label("Address", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                @Html.Label("Phone Number", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+                @Html.Label("Zip Code", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
+                </div>
+            </div>
+
+            <div class="form-group" id="txtPreferredDistance">
+                @Html.ValidationMessageFor(model => model.PreferredDistance, "", new { @class = "text-danger" })
+                @Html.Label("Preferred Distance", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PreferredDistance, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("User Type", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+                <div id="ddlUserType" class="col-md-10">
+                    @Html.DropDownListFor(model => model.UserTypeID, new SelectList(Model.UserTypesSelect, "UserTypeID", "Description"), htmlAttributes: new { @class = "dropDowns" })
+                    @Html.ValidationMessageFor(model => model.UserTypeID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
         <div class="form-group">
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            @Html.Label("Email Address", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ValidationSummary(true, "Missing Infomation", new { @class = "text-danger" })
+                <input type="submit" value="Register" class="btn btn-default buttonFont" />
             </div>
         </div>
-        <div class="form-group">
-            @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
-            @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            @Html.Label("Address", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-            @Html.Label("Phone Number", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
-            @Html.Label("Zip Code", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
-            </div>
-        </div>
-
-        <div class="form-group" id="txtPreferredDistance">
-            @Html.ValidationMessageFor(model => model.PreferredDistance, "", new { @class = "text-danger" })
-            @Html.Label("Preferred Distance", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PreferredDistance, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.Label("User Type", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div id="ddlUserType" class="col-md-10">
-                @Html.DropDownListFor(model => model.UserTypeID, new SelectList(Model.UserTypesSelect, "UserTypeID", "Description"))
-                @Html.ValidationMessageFor(model => model.UserTypeID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            @Html.ValidationSummary(true, "Missing Infomation", new { @class = "text-danger" })
-            <input type="submit" value="Register" class="btn btn-default" />
-        </div>
-    </div>
-}
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-
-    $(document).ready(ToggleUserTypeFields);
-    function TogglePreferredDistance() {
-        if ($("#ddlUserType option:selected").val() == '1') {
-            $("#txtPreferredDistance").hide();
-            console.log($("#ddlUserType option:selected").val());
-        }
-        else {
-            $("#txtPreferredDistance").show();
-            console.log($("#ddlUserType option:selected").val());
-        }
     }
-    function ToggleUserTypeFields() {
-        TogglePreferredDistance()
 
-        $("#ddlUserType").on("change", function () {
-            TogglePreferredDistance()
-        });
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
 
-        function ConfirmationRegister(resultString) {
-            alert(resultString)
+        $(document).ready(ToggleUserTypeFields);
+        function TogglePreferredDistance() {
+            if ($("#ddlUserType option:selected").val() == '1') {
+                $("#txtPreferredDistance").hide();
+                console.log($("#ddlUserType option:selected").val());
+            }
+            else {
+                $("#txtPreferredDistance").show();
+                console.log($("#ddlUserType option:selected").val());
+            }
         }
-    };
-</script>
+        function ToggleUserTypeFields() {
+            TogglePreferredDistance()
 
-@if (ViewBag.Alert != null)
-{
-    <script>                
+            $("#ddlUserType").on("change", function () {
+                TogglePreferredDistance()
+            });
+
+            function ConfirmationRegister(resultString) {
+                alert(resultString)
+            }
+        };
+    </script>
+
+    @if (ViewBag.Alert != null)
+    {
+        <script>
+
         window.onload = function () {
             alert("@ViewBag.Message");
         };
-    </script>
+        </script>
     }
 
     @section Scripts{
