@@ -172,6 +172,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClientViewModel.cs" />
+    <Compile Include="Models\PaymentConfirmationViewModel.cs" />
     <Compile Include="Models\PaymentViewModel.cs" />
     <Compile Include="Models\ServiceProviderViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
@@ -191,6 +192,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\builderIcon1.png" />
     <Content Include="Images\carpetImage.jpg" />
+    <Content Include="Images\checkMarkIcon.png" />
     <Content Include="Images\conditionerImage.jpg" />
     <Content Include="Images\customizeImage.jpeg" />
     <Content Include="Images\homeImage.jpg" />
@@ -205,6 +207,7 @@
     <Content Include="Images\rateImage.png" />
     <Content Include="Images\serviceProviderImage.png" />
     <Content Include="Images\servicesImage.jpg" />
+    <Content Include="Images\xMark.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -249,6 +252,7 @@
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\PaymentConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

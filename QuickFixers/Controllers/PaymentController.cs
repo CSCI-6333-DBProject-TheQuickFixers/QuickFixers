@@ -19,7 +19,7 @@ namespace QuickFixers.Controllers
 
 
         [HttpPost]
-        public ActionResult Index(PaymentViewModel paymentViewModelPost)
+         public ActionResult Index(PaymentViewModel paymentViewModelPost)
         {
             if (ModelState.IsValid)
             {
@@ -30,20 +30,27 @@ namespace QuickFixers.Controllers
                 newPayment.AmountDue = paymentViewModelPost.AmountDue;
                 newPayment.PaymentAmount = paymentViewModelPost.AmountDue;
 
-                Boolean isValidPayment = Data.Models.Payment.MakePayment(newPayment);
+                PaymentConfirmationViewModel paymentConfirmationViewModel = new PaymentConfirmationViewModel();
+                paymentConfirmationViewModel.IsValidPayment = Data.Models.Payment.MakePayment(newPayment);
 
-                if (isValidPayment)
-                {
-                return RedirectToAction("Index", "Test");
-                }
-                else
-                {
-                    return View("Error");
-                }
+                return RedirectToAction("PaymentConfirmation", "Payment", paymentConfirmationViewModel);                
             }
             else
             {
                 return View("Error");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult PaymentConfirmation(PaymentConfirmationViewModel paymentViewModelGet)
+        {
+            if (ModelState.IsValid)
+            {
+                 return View(paymentViewModelGet);
+            }
+            else
+            {
+                 return View("Error");
             }
         }
 

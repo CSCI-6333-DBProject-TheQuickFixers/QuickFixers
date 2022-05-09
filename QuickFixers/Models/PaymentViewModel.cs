@@ -7,9 +7,9 @@ using System.Web;
 namespace QuickFixers.Models
 {
     public class PaymentViewModel
-    {
-          
-        [StringLength(maximumLength:16)]
+    {          
+        public Boolean IsValidPayment { get; set; }
+        
         public string CardNumber { get; set; }
 
         public string BankAccount { get; set; }
@@ -21,6 +21,7 @@ namespace QuickFixers.Models
         public int ExpirationYear { get; set; }
 
         public decimal AmountDue { get; set;  }
+
         [Required]     
         public decimal PaymentAmount { get; set; }
 

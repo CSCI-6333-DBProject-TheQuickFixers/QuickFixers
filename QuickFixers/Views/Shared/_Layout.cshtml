@@ -42,9 +42,7 @@ Buttons related to usertype also are filtered.*@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="listItem">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                        <li class="listItem">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                        <li class="listItem">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
-
+                    
                         @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["UserTypeID"]))) && Convert.ToString(Session["UserTypeID"]) == "1")
                         {
                             <li class="listItem">@Html.ActionLink("Customer Welcome Page", "Index", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
@@ -81,7 +79,7 @@ Buttons related to usertype also are filtered.*@
             @RenderBody()
             <hr />
             <footer>
-                <p style="color:black"><b>&copy;@DateTime.Now.Year - QuickFixers</b></p>
+                <p class="text-primary"><b>&copy;@DateTime.Now.Year - QuickFixers</b></p>
             </footer>
         </div>
     </div>
