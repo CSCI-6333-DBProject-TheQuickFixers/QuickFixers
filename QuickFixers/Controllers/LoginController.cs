@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using QuickFixers.Data;
-//QuickFixers.Data is where we'd make database calls, seperate from the Web part of the project. 
+ //QuickFixers.Data is where we'd make database calls, seperate from the Web part of the project. 
 //This would hold object classes that have db data we can reference in the View/Controller.
 using QuickFixers.Data.Models;
 using QuickFixers.Models;
 using QuickFixers.Data.DataBase;
 using System.Data;
+using QuickFixers.Data.Utilities;
 
 namespace QuickFixers.Controllers
 {
@@ -50,16 +50,13 @@ namespace QuickFixers.Controllers
 
                 // Add parameter names and values to dictionary
                 spParameters.Add("@Email", homeViewModelPost.Email);
-                spParameters.Add("@UserPassword", homeViewModelPost.UserPassword);
+                spParameters.Add("@UserPassword", homeViewModelPost.UserPassword.ToEncryptedString());
 
                 DataTable selectedUser = DatabaseSelections.Select("quickFixers.selectUser", spParameters);
 
                 if ((selectedUser != null) & (selectedUser.Rows.Count > 0))
                 {
-                    Session.Add("userid", selectedUser.Rows[0]["UserID"]);
-                    Session.Add("userTypeID", selectedUser.Rows[0]["UserTypeID"]);
-                    Session.Add("sessionGUID", Guid.NewGuid());
-
+                    CreateSession(selectedUser);
                     //Successful Login Redirect to ServiceProviderHome
                     if ((int)Session["userTypeID"] == 2)
                     {
@@ -67,7 +64,7 @@ namespace QuickFixers.Controllers
                     }
                     else 
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Client");
                     }
                 }
                 else
@@ -107,7 +104,7 @@ namespace QuickFixers.Controllers
                 #region Populate object to pass in DB call
                 newUser.UserTypeID = newLoginViewModel.UserTypeID;
                 newUser.Email = newLoginViewModel.Email;
-                newUser.UserPassword = newLoginViewModel.UserPassword;
+                newUser.UserPassword = newLoginViewModel.UserPassword.ToEncryptedString();
                 newUser.Name = newLoginViewModel.Name;
                 newUser.PhoneNumber = newLoginViewModel.PhoneNumber;
                 newUser.ZipCode = newLoginViewModel.ZipCode;
@@ -115,20 +112,34 @@ namespace QuickFixers.Controllers
                 newUser.PreferredDistance = newLoginViewModel.PreferredDistance;
                 #endregion
 
-                Tuple<Int32,Int32, String> newUserResults = DatabaseInserts.CreateUserClient(newUser);
+                Tuple<Int32, Int32, String> newUserResults = DatabaseInserts.CreateUserClient(newUser);           
                 if (newUserResults.Item1 == 1)
-                {                     
+                {
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                   ViewBag.Message("Failed to create user, please try again");
-                   return RedirectToAction("Register", "Login");
+                    return View("Error");
                 }
             }
             else
             {
-                return RedirectToAction("Register","Login");
+                return View("Error");
+            }
+        }
+
+        protected Boolean CreateSession(DataTable selectedUser) 
+        {
+            if ((selectedUser != null) & (selectedUser.Rows.Count > 0))
+            {
+                Session.Add("userid", selectedUser.Rows[0]["UserID"]);
+                Session.Add("userTypeID", selectedUser.Rows[0]["UserTypeID"]);
+                Session.Add("sessionGUID", Guid.NewGuid());
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

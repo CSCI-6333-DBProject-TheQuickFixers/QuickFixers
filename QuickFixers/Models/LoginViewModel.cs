@@ -17,19 +17,23 @@ namespace QuickFixers.Models
     public class LoginViewModel
     {
         [Required]
+        [StringLength(255)]
         [EmailAddress()]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(maximumLength:20,ErrorMessage ="Valid Password Required")]
+        [StringLength(maximumLength:255, ErrorMessage ="Valid Password Required")]
         public string UserPassword { get; set; }
 
         [Required]
+        [StringLength(255)]
         public string Name { get; set; }
 
         [Required]
+        [StringLength(255)]
         public string Address { get; set; }
 
+        [StringLength(11)]
         public string PhoneNumber { get; set; }
 
         [Required]
