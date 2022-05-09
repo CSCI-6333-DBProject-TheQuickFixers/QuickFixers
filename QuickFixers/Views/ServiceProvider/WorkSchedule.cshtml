@@ -3,7 +3,8 @@
 
 @{
     ViewBag.Title = "Work Schedule";
-    Layout = "~/Views/Shared/_SPLayout.cshtml";
+    //Layout = "~/Views/Shared/_SPLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     string[] THeaders = new string[] { "WeekDay", "StartTime", "EndTime", "Timezone" };
 }
 
@@ -27,18 +28,21 @@
             {
                 foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
                 {
-                    <tr>
-                        <td>@DataTest["DayoftheWeek"]</td>
-                        <td>@DataTest["StartTime"]</td>
-                        <td>@DataTest["EndTime"]</td>
-                        <td>@DataTest["TimeZone"]</td>
-                    </tr>
+                <tr>
+                    <td>@DataTest["DayoftheWeek"]</td>
+                    <td>@DataTest["StartTime"]</td>
+                    <td>@DataTest["EndTime"]</td>
+                    <td>@DataTest["TimeZone"]</td>
+                    <td>@Html.ActionLink("Edit", "EditSPWorkSchedule", new { id = DataTest["AvailabilityID"] })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteSPWorkSchedule", new { id = DataTest["AvailabilityID"] }, new { onclick = "return confirm('Are sure you want to delete?');" })</td>
+                </tr>
                 }
             }
         }
         <tbody>
         </tbody>
     </table>
+    <p>@Html.ActionLink("Add", "CreateSPWorkSchedule")</p>
 </div>
 
 

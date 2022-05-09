@@ -3,7 +3,8 @@
 
 @{
     ViewBag.Title = "Services Offered";
-    Layout = "~/Views/Shared/_SPLayout.cshtml";
+    //Layout = "~/Views/Shared/_SPLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     string[] THeaders = new string[] { "ServiceTypeName", "ServiceFee (Dollars)" };
 }
 
@@ -27,15 +28,18 @@
             {
                 foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
                 {
-                    <tr>
-                        <td>@DataTest["ServiceTypeName"]</td>
-                        <td>@DataTest["ServiceFee"]</td>
-                    </tr>
+                <tr>
+                    <td>@DataTest["ServiceTypeName"]</td>
+                    <td>@DataTest["ServiceFee"]</td>
+                    <td>@Html.ActionLink("Edit", "EditSPServiceOffered", new { id = DataTest["ServiceOfferedID"] })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteSPServiceOffered", new { id = DataTest["ServiceOfferedID"] }, new { onclick = "return confirm('Are sure you want to delete?');" })</td>
+                </tr>
                 }
             }
         }
         <tbody>
         </tbody>
     </table>
+    <p>@Html.ActionLink("Add", "CreateSPServiceOffered")</p>
 </div>
 

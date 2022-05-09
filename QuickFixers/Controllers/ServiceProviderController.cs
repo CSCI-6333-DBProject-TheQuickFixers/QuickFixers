@@ -107,5 +107,18 @@ namespace QuickFixers.Controllers
 
         }
 
+        public ActionResult CreateSPWorkSchedule()
+        {
+
+
+            return View();
+
+        }
+
+        public ActionResult CreateSPServiceOffered()
+        {
+            return View();
+
+        }
     }
 }
