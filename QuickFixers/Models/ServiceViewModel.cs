@@ -21,13 +21,10 @@ namespace QuickFixers.Models
             }
         }
 
-        public string ServiceTypeName { get; set; }
         public int ZipCode { get; set; }
         public int PreferredDistance { get; set; }
-        public int ServiceProviderID { get; set; }
         public string ServiceProviderName { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndtDate { get; set; }
+        public DateTime SearchDate { get; set; } = DateTime.Now;
         public DayOfWeek DayOfTheWeek { get; set; }
 
     }
