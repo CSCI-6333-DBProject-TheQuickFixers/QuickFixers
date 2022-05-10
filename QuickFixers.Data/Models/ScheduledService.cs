@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace QuickFixers.Data.Models
         public string ServiceTypeName { get; set; }
         public DateTime ServiceDate { get; set; }
         public string ServiceAddress { get; set; }
-        public double ServiceFee { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal ServiceFee { get; set; }
     }
 }
