@@ -5,8 +5,6 @@ using QuickFixers.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace QuickFixers.Controllers
@@ -45,28 +43,18 @@ namespace QuickFixers.Controllers
             return View(model);
         }
 
-        public ActionResult SelectService(List<Service> selectedServices)
-        {
-            var model = selectedServices;
-            return View(model);
-        }
 
-        [HttpPost]
-        public ActionResult Services(ServiceViewModel serviceViewModelPost)
+        [HttpGet]
+        public ActionResult SelectService(ServiceViewModel serviceViewModelPost)
         {
+
             if (ModelState.IsValid)
             {
-                Service searchService = new Service
-                {
-                    ServiceTypeID = serviceViewModelPost.ServiceTypeID,
-                    ServiceProviderName = serviceViewModelPost.ServiceProviderName,
-                    ZipCode = serviceViewModelPost.ZipCode,
-                    PreferredDistance = serviceViewModelPost.PreferredDistance
-                };
+                List<Service> servicesFound = new List<Service>();
 
                 // searchService      
-                DayOfWeek daytest = serviceViewModelPost.StartDate.DayOfWeek;
-                String serviceTime = serviceViewModelPost.StartDate.ToString("HH:mm:ss");
+                DayOfWeek daytest = serviceViewModelPost.SearchDate.DayOfWeek;
+                String serviceTime = serviceViewModelPost.SearchDate.ToString("HH:mm:ss");
                 Dictionary<string, string> spParameters = new Dictionary<string, string>();
 
                 // Add parameter names and values to dictionary
@@ -82,20 +70,32 @@ namespace QuickFixers.Controllers
 
                 if ((selectedServices != null) & (selectedServices.Rows.Count > 0))
                 {
-                    List<Service> servicesFound = DatabaseSelections.ConvertToList<Service>(selectedServices);
+                    servicesFound = DatabaseSelections.ConvertToList<Service>(selectedServices);
+                   
+
+                    foreach (Service servTest in servicesFound)
+                    {
+                        servTest.ServiceDate = serviceViewModelPost.SearchDate;
+                    }
 
                     return View(servicesFound);
                 }
-                else
-                {
-                    ModelState.AddModelError("No Services that meet that criteria.", "Try other data.");
-                    return View();
+                else { 
+                
+                    return View("Error");
                 }
             }
             else
             {
-                return RedirectToAction("Index", "Login");
+                return View("Error");
             }
+
+        }
+
+        [HttpPost]
+        public ActionResult Services(ServiceViewModel serviceViewModelPost)
+        {
+            return RedirectToAction("SelectService", "Client", serviceViewModelPost);
         }
 
     }
