@@ -169,7 +169,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ServicesFoundViewModel.cs" />
     <Compile Include="Models\ServiceViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -231,7 +230,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Home\MainPage.cshtml" />
-    <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Client\Services.cshtml" />
     <Content Include="Views\Client\ScheduledServices.cshtml" />
     <Content Include="Views\Client\PastServices.cshtml" />
