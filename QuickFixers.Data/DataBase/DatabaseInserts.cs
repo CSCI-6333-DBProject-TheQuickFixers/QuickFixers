@@ -81,7 +81,7 @@ namespace QuickFixers.Data.DataBase
                         sqlQuery.CommandType = CommandType.StoredProcedure;
                         sqlQuery.Parameters.AddWithValue($"@InputServiceProviderID", newPayment.ServiceProviderID);
                         sqlQuery.Parameters.AddWithValue($"@InputClientID", newPayment.ClientID);
-                        sqlQuery.Parameters.AddWithValue($"@InputServiceOfferedID", newPayment.ServicesOfferedID);
+                        sqlQuery.Parameters.AddWithValue($"@InputServiceOfferedID", newPayment.ServiceOfferedID);
                         sqlQuery.Parameters.AddWithValue($"@InputServiceDate", newPayment.ServiceDate);
                         sqlQuery.Parameters.AddWithValue($"@InputServiceAddress", newPayment.ServiceAddress);
                         sqlQuery.Parameters.AddWithValue($"@InputPaymentAmount", newPayment.PaymentAmount);

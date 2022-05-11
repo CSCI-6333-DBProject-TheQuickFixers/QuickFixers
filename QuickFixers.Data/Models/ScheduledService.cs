@@ -14,7 +14,7 @@ namespace QuickFixers.Data.Models
         public string ServiceProviderName { get; set; }
         public int ClientID { get; set; }
         public string ClientName { get; set; }
-        public int ServicesOfferedID { get; set; }
+        public int ServiceOfferedID { get; set; }
         public string ServiceTypeName { get; set; }
         public DateTime ServiceDate { get; set; }
         public string ServiceAddress { get; set; }
