@@ -1,0 +1,33 @@
+﻿@model QuickFixers.Models.PaymentConfirmationViewModel
+<link href="~/Content/mainStyle.css" rel="stylesheet" />
+ <div class="container" style="margin-left:auto;margin-right:auto;text-align:center; width:50%">
+     <div class="panel-primary table-bordered img-rounded fontPanel">
+         @if (Model.IsValidPayment)
+         {
+             <div class="panel-heading"><img src="~/Images/checkMarkIcon.png" style="height: 200px; width: 200px;" /></div>
+             <div class="panel-body text-capitalize text-success" style="background-color:powderblue">Your payment was Success!</div>
+             <div class="panel-body text-capitalize text-success" style="background-color:powderblue">Payment Confirmation:</div>
+             <div class="panel-body text-capitalize text-info" style="background-color:powderblue">@Model.PaymentGuid</div>
+             <div class="panel-body text-capitalize text-success" style="background-color:powderblue">Payment Date:</div>
+             <div class="panel-body text-capitalize text-info" style="background-color:powderblue">@Model.PaymentDate</div>
+         }
+         else
+         {
+             <div class="panel-heading"><img src="~/Images/xMark.png" style="height: 200px; width: 200px;" /></div>
+             <div class="panel-body text-capitalize text-danger" style="background-color:powderblue">Your payment was Unsuccessful, Please try again!</div>
+         }
+
+         <div class="panel-footer" style="background-color:dodgerblue">
+             <input type="button" class="buttonFont" style="margin-right:20px" value="Invoices" onclick="location.href='@Url.Action("Index","Home")'" />
+             @if (Model.IsValidPayment)
+             {
+                 <input type="button" class="buttonFont" value="OK" onclick="location.href='@Url.Action("Index", "Home")'" />
+             }
+             else
+             {
+                 <input type="button" class="buttonFont" value="Retry" onclick="location.href='@Url.Action("Index", "Home")'" />
+
+             }
+         </div>
+     </div>
+    </div> 

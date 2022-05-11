@@ -1,0 +1,53 @@
+﻿@model QuickFixers.Models.PaymentViewModel
+<link href="~/Content/mainStyle.css" rel="stylesheet" />
+<h2 class="pageName">Payment</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.AmountDue)
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group" id="divCardNumber">
+            @Html.ValidationMessageFor(model => model.CardNumber, "", new { @class = "text-danger" })
+            @Html.Label("Card Number", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.CardNumber, new { htmlAttributes = new { @class = "form-control", autofocus = true } })
+            </div>
+        </div>
+
+        <div class="form-group" id="divCardExpMonth">
+            @Html.Label("Exp Month", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+            <div id="ddlUserType" class="col-md-10">
+                @Html.DropDownListFor(model => model.ExpirationMonth, new SelectList(Model.ExpirationMonthList), htmlAttributes: new { @class = "dropDowns" })
+                @Html.ValidationMessageFor(model => model.ExpirationMonth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="divCardExpYear">
+            @Html.Label("Exp Year", htmlAttributes: new { @class = "control-label col-md-2 fieldNames" })
+            <div id="ddlUserType" class="col-md-10">
+                @Html.DropDownListFor(model => model.ExpirationYear, new SelectList(Model.ExpirationYearList), htmlAttributes: new { @class = "dropDowns" })
+                @Html.ValidationMessageFor(model => model.ExpirationYear, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(model => model.PaymentAmount, "", new { @class = "text-danger" })
+            @Html.Label("Amount Due", htmlAttributes: new { @class = "control-label col-sm-3 fieldNames" })
+            <div class="control-label col-sm-3 fieldNames"> 
+                 @Html.Raw(Model.AmountDue.ToString("C"))
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ValidationSummary(true, "Missing Infomation", new { @class = "text-danger" })
+            <input type="submit" value="Submit Payment" class="btn btn-default buttonFont" />
+        </div>
+
+    </div>
+}
