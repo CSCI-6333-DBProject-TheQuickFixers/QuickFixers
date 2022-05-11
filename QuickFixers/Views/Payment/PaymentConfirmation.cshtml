@@ -17,17 +17,8 @@
              <div class="panel-body text-capitalize text-danger" style="background-color:powderblue">Your payment was Unsuccessful, Please try again!</div>
          }
 
-         <div class="panel-footer" style="background-color:dodgerblue">
-             <input type="button" class="buttonFont" style="margin-right:20px" value="Invoices" onclick="location.href='@Url.Action("Index","Home")'" />
-             @if (Model.IsValidPayment)
-             {
-                 <input type="button" class="buttonFont" value="OK" onclick="location.href='@Url.Action("Index", "Home")'" />
-             }
-             else
-             {
-                 <input type="button" class="buttonFont" value="Retry" onclick="location.href='@Url.Action("Index", "Home")'" />
-
-             }
+         <div class="panel-footer" style="background-color:dodgerblue"> 
+             <input type="button" class="buttonFont" value="Services" onclick="location.href='@Url.Action("Services", "Client")'" />
          </div>
      </div>
     </div> 
