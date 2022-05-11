@@ -34,12 +34,12 @@ namespace QuickFixers.Controllers
                         Session.Add("ZipCode", selectedSP.Rows[0]["ZipCode"]);
                         Session.Add("ServiceProviderName", selectedSP.Rows[0]["ServiceProviderName"]);
 
-                        ViewBag.Message = "Hello " + (string)Session["ServiceProviderName"] + "!";
+                      
                         return View();
                     }
                     else
                     {
-                        ViewBag.Message = "Hello " + "(Error: Could Not Retrieve Name)! " + Session["userid"];
+                        
                         return View();
                     }
                 }
