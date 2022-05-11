@@ -18,6 +18,7 @@ namespace QuickFixers.Data.Models
         public DateTime ServiceDate { get; set; }
         [DataType(DataType.Currency)]
         public decimal ServiceFee { get; set; }
+        public int ServiceOfferedID { get; set; }
 
     }
 }

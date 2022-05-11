@@ -165,6 +165,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ServiceProviderController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -174,6 +175,8 @@
     <Compile Include="Models\CreateSPSOModel.cs" />
     <Compile Include="Models\CreateSPWSModel.cs" />
     <Compile Include="Models\ClientViewModel.cs" />
+    <Compile Include="Models\PaymentConfirmationViewModel.cs" />
+    <Compile Include="Models\PaymentViewModel.cs" />
     <Compile Include="Models\ServiceProviderViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -192,6 +195,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\builderIcon1.png" />
     <Content Include="Images\carpetImage.jpg" />
+    <Content Include="Images\checkMarkIcon.png" />
     <Content Include="Images\conditionerImage.jpg" />
     <Content Include="Images\customizeImage.jpeg" />
     <Content Include="Images\homeImage.jpg" />
@@ -206,6 +210,7 @@
     <Content Include="Images\rateImage.png" />
     <Content Include="Images\serviceProviderImage.png" />
     <Content Include="Images\servicesImage.jpg" />
+    <Content Include="Images\xMark.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -252,6 +257,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\ServiceProvider\ErrorPage.cshtml" />
     <Content Include="Views\ServiceProvider\CreateWSAction.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\PaymentConfirmation.cshtml" />
     <Content Include="Views\Client\SelectService.cshtml" />
   </ItemGroup>
   <ItemGroup>
