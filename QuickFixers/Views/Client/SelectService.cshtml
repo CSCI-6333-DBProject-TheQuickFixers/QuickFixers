@@ -1,0 +1,69 @@
+﻿@model IEnumerable<QuickFixers.Data.Models.Service>
+
+@{
+    ViewBag.Title = "SelectServiceTEST";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Select a Service</h2>
+
+
+<table class="table" style="background-color: white;">
+    <tr>
+        <th>
+            &nbsp;
+        </th>
+
+        <th>
+          Service Type Name
+        </th>
+        <th>
+          Service Provider Name
+        </th>
+
+        <th>
+            Service Fee
+        </th>
+        <th>
+            Zip Code
+        </th>
+        <th>
+           Preferred Distance
+        </th>
+        <th>
+            Service Date
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.ActionLink("Select", "SelectTEST", new { /* id=item.PrimaryKey */ })
+        </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceProviderName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreferredDistance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceDate)
+            </td>
+        </tr>
+    }
+
+    <a href="##" onClick="history.go(-1); return false;">Go back to Previous Page</a>
+</table>

@@ -1,9 +1,9 @@
 ﻿using QuickFixers.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
 namespace QuickFixers.Data.Services
 {
@@ -13,33 +13,31 @@ namespace QuickFixers.Data.Services
 
         public InMemoryScheduledServiceData()
         {
-            scheduledServices = new List<ScheduledService>()
-            {
-                new ScheduledService { clientID=1, scheduledServiceID=1, serviceAddress="Test AVe.", serviceDate= DateTime.Now, serviceProviderID=1, servicesOfferedID=1 },
-                new ScheduledService { clientID=1, scheduledServiceID=3, serviceAddress="East Coast AVe.", serviceDate= DateTime.Now.AddDays(-1), serviceProviderID=1, servicesOfferedID=1 },
-                new ScheduledService { clientID=1, scheduledServiceID=4, serviceAddress="Test AVe. 2", serviceDate= DateTime.Now.AddDays(1), serviceProviderID=1, servicesOfferedID=1 },
-                new ScheduledService { clientID=1, scheduledServiceID=2, serviceAddress="Test AVe.", serviceDate= DateTime.Now.AddDays(4), serviceProviderID=1, servicesOfferedID=1 },
+            int testVal = (int)HttpContext.Current.Session["userid"];
 
-            };
-        }
+            Dictionary<string, string> storedProcedureParameters = new Dictionary<string, string>();
+            storedProcedureParameters.Add("@UserID", testVal.ToString());
+
+            DataTable testTable = DataBase.DatabaseSelections.Select("quickFixers.selectServicesByUserID", storedProcedureParameters);
+            scheduledServices = DataBase.DatabaseSelections.ConvertToList<ScheduledService>(testTable);        }
         public ScheduledService Get(int id)
         {
-            return scheduledServices.FirstOrDefault(s => s.scheduledServiceID == id);
+            return scheduledServices.FirstOrDefault(s => s.ScheduledServiceID == id);
         }
 
         public IEnumerable<ScheduledService> GetAll()
         {
-            return scheduledServices.OrderBy(s => s.scheduledServiceID);
+            return scheduledServices.OrderBy(s => s.ScheduledServiceID);
         }
 
         public IEnumerable<ScheduledService> GetAllPast()
         {
-            return scheduledServices.Where(s => s.serviceDate < DateTime.Now);
+            return scheduledServices.Where(s => s.ServiceDate < DateTime.Now);
         }
 
         public IEnumerable<ScheduledService> GetAllFuture()
         {
-            return scheduledServices.Where(s => s.serviceDate > DateTime.Now);
+            return scheduledServices.Where(s => s.ServiceDate > DateTime.Now);
         }
     }
 }

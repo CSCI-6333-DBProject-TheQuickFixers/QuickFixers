@@ -41,33 +41,37 @@ Buttons related to usertype also are filtered.*@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
+
                         <li class="listItem">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-text-med" })</li>
                     
                         @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["UserTypeID"]))) && Convert.ToString(Session["UserTypeID"]) == "1")
                         {
-                            <li class="listItem">@Html.ActionLink("Customer Welcome Page", "Index", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                            <li class="listItem">@Html.ActionLink("Search Services", "Services", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                            <li class="listItem">@Html.ActionLink("Scheduled Services", "ScheduledServices", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                            <li class="listItem">@Html.ActionLink("Past Services", "PastServices", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Search Services", "Services", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Scheduled Services", "ScheduledServices", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Past Services", "PastServices", "Client", new { area = "" }, new { @class = "navbar-text-med" })</li>
                         }
 
                         @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["UserTypeID"]))) && Convert.ToString(Session["UserTypeID"]) == "2")
                         {
-                            <li class="listItem">@Html.ActionLink("Work Schedule", "WorkSchedule", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                            <li class="listItem">@Html.ActionLink("Invoices", "Invoices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                            <li class="listItem">@Html.ActionLink("Services Offered", "ServicesOffered", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                            <li class="listItem">@Html.ActionLink("Scheduled Services", "ScheduledServices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                            <li class="listItem">@Html.ActionLink("Past Services", "PastServices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Main", "Index", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Work Schedule", "WorkSchedule", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Invoices", "Invoices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Services Offered", "ServicesOffered", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Scheduled Services", "ScheduledServices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Past Services", "PastServices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
                         }
 
                         @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["sessionGuid"]))))
                         {
-                            <li class="listItem">@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "navbar-text-med" })</li>
                         }
                         else
                         {
-                            <li class="listItem">@Html.ActionLink("Register", "Register", "Login", new { area = "" }, new { @class = "navbar-text-med" })</li>
-                            <li class="listItem">@Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Register", "Register", "Login", new { area = "" }, new { @class = "navbar-text-med" })</li>
+                            <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "navbar-text-med" })</li>
                         }
                     </ul>
                 </div>

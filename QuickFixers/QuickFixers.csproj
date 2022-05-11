@@ -171,6 +171,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ServiceViewModel.cs" />
     <Compile Include="Models\CreateSPSOModel.cs" />
     <Compile Include="Models\CreateSPWSModel.cs" />
     <Compile Include="Models\ClientViewModel.cs" />
@@ -258,6 +259,7 @@
     <Content Include="Views\ServiceProvider\CreateWSAction.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\PaymentConfirmation.cshtml" />
+    <Content Include="Views\Client\SelectService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

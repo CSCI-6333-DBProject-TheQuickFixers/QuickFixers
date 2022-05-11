@@ -7,25 +7,25 @@
 
 <h2>Scheduled Services</h2>
 
-<table class="table">
+<table class="table" style="background-color: white;">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.scheduledServiceID)
+            Service Provider Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.serviceProviderID)
+            Client Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.clientID)
+            Service Type Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.servicesOfferedID)
+            Service Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.serviceDate)
+            Service Fee
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.serviceAddress)
+            Service Address
         </th>
         <th></th>
     </tr>
@@ -33,22 +33,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.scheduledServiceID)
+            @Html.DisplayFor(modelItem => item.ServiceProviderName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.serviceProviderID)
+            @Html.DisplayFor(modelItem => item.ClientName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.clientID)
+            @Html.DisplayFor(modelItem => item.ServiceTypeName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.servicesOfferedID)
+            @Html.DisplayFor(modelItem => item.ServiceDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.serviceDate)
+            @Html.DisplayFor(modelItem => item.ServiceFee)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.serviceAddress)
+            @Html.DisplayFor(modelItem => item.ServiceAddress)
         </td>
     </tr>
 }

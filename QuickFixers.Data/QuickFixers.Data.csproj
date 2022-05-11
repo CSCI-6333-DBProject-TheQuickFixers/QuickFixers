@@ -70,6 +70,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -93,6 +94,8 @@
     <Compile Include="Models\IUser.cs" />
     <Compile Include="Models\LoginAccount.cs" />
     <Compile Include="Models\ScheduledService.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\ServiceType.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
