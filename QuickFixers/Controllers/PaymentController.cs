@@ -46,6 +46,7 @@ namespace QuickFixers.Controllers
                 newPayment.ServicesOfferedID = paymentViewModelPost.ServiceOfferredID;
                 newPayment.ServiceAddress = paymentViewModelPost.ServiceAddress;
                 newPayment.PaymentDate = DateTime.Now;
+                newPayment.ServiceDate = DateTime.Now;
                  #endregion
                 PaymentConfirmationViewModel paymentConfirmationViewModel = new PaymentConfirmationViewModel();
 
