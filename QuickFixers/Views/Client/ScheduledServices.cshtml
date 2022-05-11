@@ -30,27 +30,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceProviderName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceTypeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceFee)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceAddress)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceProviderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceAddress)
+            </td>
+        </tr>
+    }
 
+    <a href="##" onClick="history.go(-1); return false;">Go back to Previous Page</a>
 </table>
