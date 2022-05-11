@@ -94,10 +94,6 @@ namespace QuickFixers.Controllers
         public ActionResult CreateWSAction(FormCollection collection)
         {
 
-            //ViewBag.Message = collection[1] + " " + collection[2] + " " + collection[3] + " " + collection[4];
-
-            //return View();
-
             String ResultStatus = Data.DataBase.DatabaseInserts.CreateNewWorkSchedule((int)Session["ServiceProviderID"], collection[1], collection[2], collection[3], collection[4]);
 
 
@@ -147,10 +143,6 @@ namespace QuickFixers.Controllers
         public ActionResult CreateSOAction(FormCollection collection)
         {
 
-            //ViewBag.Message = collection[1] + " " + collection[2] + " " + collection[3] + " " + collection[4];
-
-            //return View();
-
             String ResultStatus = Data.DataBase.DatabaseInserts.CreateNewServiceOffered((int)Session["ServiceProviderID"], Int32.Parse(collection[1]), Decimal.Parse(collection[2]));
 
 
@@ -185,7 +177,6 @@ namespace QuickFixers.Controllers
                 return RedirectToAction("ErrorPage", "ServiceProvider");
             }
 
-            //return View();
         }
 
         public ActionResult ErrorPage()

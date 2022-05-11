@@ -112,12 +112,6 @@ namespace QuickFixers.Models
         HST, AKST, PST, MST, CST, EST
     }
 
-    //public enum TimeChoose
-    //{
-    //    00:00:00, 00:30:00
-    //
-    //
-    //}
 
 
 
