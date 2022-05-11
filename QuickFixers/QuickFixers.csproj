@@ -251,6 +251,8 @@
     <Content Include="Views\ServiceProvider\CreateSPWorkSchedule.cshtml" />
     <Content Include="Views\ServiceProvider\CreateSPServiceOffered.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\ServiceProvider\ErrorPage.cshtml" />
+    <Content Include="Views\ServiceProvider\CreateWSAction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

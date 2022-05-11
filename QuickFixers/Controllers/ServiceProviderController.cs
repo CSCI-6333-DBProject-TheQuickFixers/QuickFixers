@@ -83,8 +83,7 @@ namespace QuickFixers.Controllers
 
             ServiceProviderViewModel scheduledresults = new ServiceProviderViewModel();
             scheduledresults.DbResults = Data.DataBase.DatabaseSelections.SelectSPScheduledServices((int)Session["ServiceProviderID"]);
-            scheduledresults.IsDBConnected = scheduledresults.DbResults != null && scheduledresults.DbResults.Rows.Count > 0 ? true : false;
-
+ 
             ViewBag.Message = "Shows current scheduled services ";
 
             return View(scheduledresults);
@@ -109,16 +108,114 @@ namespace QuickFixers.Controllers
 
         public ActionResult CreateSPWorkSchedule()
         {
+            var modeltest = new CreateSPWSModel();
 
-
-            return View();
+            return View(modeltest);
 
         }
 
+        [HttpPost]
+        public ActionResult CreateWSAction(FormCollection collection)
+        {
+
+            //ViewBag.Message = collection[1] + " " + collection[2] + " " + collection[3] + " " + collection[4];
+
+            //return View();
+
+            String ResultStatus = Data.DataBase.DatabaseInserts.CreateNewWorkSchedule((int)Session["ServiceProviderID"], collection[1], collection[2], collection[3], collection[4]);
+
+
+            if (ResultStatus == "Success")
+            {
+                return RedirectToAction("WorkSchedule", "ServiceProvider");
+            }
+            else
+            {           
+                return RedirectToAction("ErrorPage", "ServiceProvider");
+            }
+
+
+            
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DeleteSPWorkSchedule(int id)
+        {
+
+            String ResultStatus = Data.DataBase.DatabaseInserts.DeleteWorkSchedule(id);
+
+
+            if (ResultStatus == "Success")
+            {
+                return RedirectToAction("WorkSchedule", "ServiceProvider");
+            }
+            else
+            {
+                return RedirectToAction("ErrorPage", "ServiceProvider");
+            }
+
+            //return View();
+        }
+
+
+
         public ActionResult CreateSPServiceOffered()
         {
-            return View();
+            var modeltest = new CreateSPSOModel();
 
+            return View(modeltest);
+
+        }
+
+        [HttpPost]
+        public ActionResult CreateSOAction(FormCollection collection)
+        {
+
+            //ViewBag.Message = collection[1] + " " + collection[2] + " " + collection[3] + " " + collection[4];
+
+            //return View();
+
+            String ResultStatus = Data.DataBase.DatabaseInserts.CreateNewServiceOffered((int)Session["ServiceProviderID"], Int32.Parse(collection[1]), Decimal.Parse(collection[2]));
+
+
+            if (ResultStatus == "Success")
+            {
+                return RedirectToAction("ServicesOffered", "ServiceProvider");
+            }
+            else
+            {
+                return RedirectToAction("ErrorPage", "ServiceProvider");
+            }
+
+
+
+        }
+
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DeleteSPServiceOffered(int id)
+        {
+
+            String ResultStatus = Data.DataBase.DatabaseInserts.DeleteServiceOffered(id);
+
+
+            if (ResultStatus == "Success")
+            {
+                return RedirectToAction("ServicesOffered", "ServiceProvider");
+            }
+            else
+            {
+                return RedirectToAction("ErrorPage", "ServiceProvider");
+            }
+
+            //return View();
+        }
+
+        public ActionResult ErrorPage()
+        {
+            ViewBag.Message = "Error Encountered...";
+            return View();
         }
     }
 }

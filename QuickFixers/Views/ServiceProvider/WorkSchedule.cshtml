@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Work Schedule";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string[] THeaders = new string[] { "WeekDay", "StartTime", "EndTime", "Timezone" };
+    string[] THeaders = new string[] {"WeekDay", "StartTime", "EndTime", "Timezone" };
 }
 
 <h2>@ViewBag.Title</h2>
@@ -27,21 +27,26 @@
             {
                 foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
                 {
-                <tr>
-                    <td>@DataTest["DayoftheWeek"]</td>
-                    <td>@DataTest["StartTime"]</td>
-                    <td>@DataTest["EndTime"]</td>
-                    <td>@DataTest["TimeZone"]</td>
-                    <td>@Html.ActionLink("Edit", "EditSPWorkSchedule", new { id = DataTest["AvailabilityID"] })</td>
-                    <td>@Html.ActionLink("Delete", "DeleteSPWorkSchedule", new { id = DataTest["AvailabilityID"] }, new { onclick = "return confirm('Are sure you want to delete?');" })</td>
-                </tr>
+                    using (Html.BeginForm("DeleteSPWorkSchedule", "ServiceProvider", new {id = DataTest["AvailabilityID"]}, FormMethod.Post))
+                    {
+                        
+                            <tr>
+                                <td>@DataTest["DayoftheWeek"]</td>
+                                <td>@DataTest["StartTime"]</td>
+                                <td>@DataTest["EndTime"]</td>
+                                <td>@DataTest["TimeZone"]</td>
+                                <td>
+                                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete record with ID = @DataTest["AvailabilityID"]');" />
+                                </td>
+                            </tr>
+                        
+                    }
                 }
             }
         }
         <tbody>
         </tbody>
     </table>
-    <p>@Html.ActionLink("Add", "CreateSPWorkSchedule")</p>
+    <p>@Html.ActionLink("Create New", "CreateSPWorkSchedule")</p>
 </div>
-
 
