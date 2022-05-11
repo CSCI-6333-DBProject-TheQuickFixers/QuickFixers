@@ -20,7 +20,7 @@ namespace QuickFixers.Controllers
             paymentViewModelGet.ServiceDate = DateTime.Now;
             paymentViewModelGet.ServiceAddress = Session["address"].ToString();
             paymentViewModelGet.ClientID = (int)Session["clientID"];
-            paymentViewModelGet.ServiceOfferredID = creatingPayment.ServicesOfferedID;
+            paymentViewModelGet.ServiceOfferredID = creatingPayment.ServiceOfferedID;
             paymentViewModelGet.ServiceProviderID = creatingPayment.ServiceProviderID;
 
             return View(paymentViewModelGet);
@@ -43,7 +43,7 @@ namespace QuickFixers.Controllers
                 newPayment.PaymentAmount = paymentViewModelPost.AmountDue;
                 newPayment.ServiceProviderID = paymentViewModelPost.ServiceProviderID;
                 newPayment.ClientID = (int)Session["clientID"];
-                newPayment.ServicesOfferedID = paymentViewModelPost.ServiceOfferredID;
+                newPayment.ServiceOfferedID = paymentViewModelPost.ServiceOfferredID;
                 newPayment.ServiceAddress = paymentViewModelPost.ServiceAddress;
                 newPayment.PaymentDate = DateTime.Now;
                  #endregion
