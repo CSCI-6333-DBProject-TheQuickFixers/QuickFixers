@@ -89,6 +89,7 @@
     <Compile Include="DataBase\DatabaseSelections.cs" />
     <Compile Include="DataBase\DatabaseExtensions.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ServiceProvider.cs" />
     <Compile Include="Models\IUser.cs" />
     <Compile Include="Models\LoginAccount.cs" />
     <Compile Include="Models\ScheduledService.cs" />

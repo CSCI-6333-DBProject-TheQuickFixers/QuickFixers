@@ -1,0 +1,55 @@
+﻿
+@model QuickFixers.Models.ServiceProviderViewModel
+
+@{
+    ViewBag.Title = "Services Offered";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string[] THeaders = new string[] { "Service Type", "Service Fee" };
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="table">
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                @{
+                    foreach (var header in THeaders)
+                    {
+                        <th>
+                            @header
+                        </th>
+                    }
+                }
+            </tr>
+        </thead>
+        @{
+            if (Model.DbResults != null)
+            {
+                foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
+                {
+
+                    using (Html.BeginForm("DeleteSPServiceOffered", "ServiceProvider", new { id = DataTest["ServiceOfferedID"] }, FormMethod.Post))
+                    {
+                        
+                        
+
+                                     <tr>
+                                         <td>@DataTest["ServiceTypeName"]</td>
+                                         <td>$@DataTest["ServiceFee"]</td>
+                                         <td>
+                                             <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete record with ID = @DataTest["ServiceOfferedID"]');" />
+                                         </td>
+                                     </tr>
+
+
+                        
+                    }
+                }
+            }
+       }
+        <tbody>
+        </tbody>
+    </table>
+    <p>@Html.ActionLink("Create New", "CreateSPServiceOffered")</p>
+</div>
+

@@ -1,0 +1,52 @@
+﻿
+@model QuickFixers.Models.ServiceProviderViewModel
+
+@{
+    ViewBag.Title = "Work Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string[] THeaders = new string[] {"WeekDay", "StartTime", "EndTime", "Timezone" };
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="table">
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                @{
+                    foreach (var header in THeaders)
+                    {
+                        <th>
+                            @header
+                        </th>
+                    }
+                }
+            </tr>
+        </thead>
+        @{
+            if (Model.DbResults != null)
+            {
+                foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
+                {
+                    using (Html.BeginForm("DeleteSPWorkSchedule", "ServiceProvider", new {id = DataTest["AvailabilityID"]}, FormMethod.Post))
+                    {
+                        
+                            <tr>
+                                <td>@DataTest["DayoftheWeek"]</td>
+                                <td>@DataTest["StartTime"]</td>
+                                <td>@DataTest["EndTime"]</td>
+                                <td>@DataTest["TimeZone"]</td>
+                                <td>
+                                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete record with ID = @DataTest["AvailabilityID"]');" />
+                                </td>
+                            </tr>
+                        
+                    }
+                }
+            }
+        }
+        <tbody>
+        </tbody>
+    </table>
+    <p>@Html.ActionLink("Create New", "CreateSPWorkSchedule")</p>
+</div>
+

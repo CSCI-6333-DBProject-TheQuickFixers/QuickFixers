@@ -1,0 +1,43 @@
+﻿@model QuickFixers.Models.ServiceProviderViewModel
+
+@{
+    ViewBag.Title = "Invoices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string[] THeaders = new string[] {"Client Name", "Service Provider Name", "Service Date", "Service Address", "Service Type", "Service Fee" };
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="table">
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                @{
+                    foreach (var header in THeaders)
+                    {
+                        <th>
+                            @header
+                        </th>
+                    }
+                }
+            </tr>
+        </thead>
+        @{
+            if (Model.DbResults != null)
+            {
+                foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
+                {
+                <tr>
+                    <td>@DataTest["ClientName"]</td>
+                    <td>@DataTest["ServiceProviderName"]</td>
+                    <td>@DataTest["ServiceDate"]</td>
+                    <td>@DataTest["ServiceAddress"]</td>
+                    <td>@DataTest["ServiceTypeName"]</td>
+                    <td>$@DataTest["ServiceFee"]</td>
+                </tr>
+                }
+            }
+        }
+        <tbody>
+        </tbody>
+    </table>
+</div>
