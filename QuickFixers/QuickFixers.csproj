@@ -243,9 +243,6 @@
     <Content Include="Views\Client\ScheduledServices.cshtml" />
     <Content Include="Views\Client\PastServices.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
-    <Content Include="Views\Client\Services.cshtml" />
-    <Content Include="Views\Client\ScheduledServices.cshtml" />
-    <Content Include="Views\Client\PastServices.cshtml" />
     <Content Include="Views\Shared\_SPLayout.cshtml" />
     <Content Include="Views\ServiceProvider\Index.cshtml" />
     <Content Include="Views\ServiceProvider\WorkSchedule.cshtml" />
