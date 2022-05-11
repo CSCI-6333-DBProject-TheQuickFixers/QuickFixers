@@ -18,6 +18,7 @@ namespace QuickFixers.Tests.Utilities
         [DataRow("HashMyPass!456")]
         [DataRow("IClient123!")]
         [DataRow("IServicePro123!")]
+        [DataRow("p23")]
         [TestMethod] public void TestHash(string passwordString)
         {
             Console.WriteLine(passwordString);
