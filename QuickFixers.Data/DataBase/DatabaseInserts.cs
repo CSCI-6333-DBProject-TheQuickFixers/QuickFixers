@@ -79,11 +79,11 @@ namespace QuickFixers.Data.DataBase
                     using (var sqlQuery = new MySqlCommand("quickFixers.InsertPayment", connectionDB))
                     {
                         sqlQuery.CommandType = CommandType.StoredProcedure;
-                        sqlQuery.Parameters.AddWithValue($"@InputServiceProviderID", newPayment.serviceProviderID);
-                        sqlQuery.Parameters.AddWithValue($"@InputClientID", newPayment.clientID);
-                        sqlQuery.Parameters.AddWithValue($"@InputServiceOfferedID", newPayment.servicesOfferedID);
-                        sqlQuery.Parameters.AddWithValue($"@InputServiceDate", newPayment.serviceDate);
-                        sqlQuery.Parameters.AddWithValue($"@InputServiceAddress", newPayment.serviceAddress);
+                        sqlQuery.Parameters.AddWithValue($"@InputServiceProviderID", newPayment.ServiceProviderID);
+                        sqlQuery.Parameters.AddWithValue($"@InputClientID", newPayment.ClientID);
+                        sqlQuery.Parameters.AddWithValue($"@InputServiceOfferedID", newPayment.ServicesOfferedID);
+                        sqlQuery.Parameters.AddWithValue($"@InputServiceDate", newPayment.ServiceDate);
+                        sqlQuery.Parameters.AddWithValue($"@InputServiceAddress", newPayment.ServiceAddress);
                         sqlQuery.Parameters.AddWithValue($"@InputPaymentAmount", newPayment.PaymentAmount);
                         sqlQuery.Parameters.AddWithValue($"@InputApproved", newPayment.IsApproved);
                         sqlQuery.Parameters.AddWithValue($"@InputPaymentDate", newPayment.PaymentDate);
