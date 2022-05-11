@@ -7,18 +7,17 @@ using System.Threading.Tasks;
 
 namespace QuickFixers.Data.Models
 {
-    public class ScheduledService
+    public class Service
     {
-        public int ScheduledServiceID { get; set; }
+        public int ServiceTypeID { get; set; }
+        public string ServiceTypeName { get; set; }
+        public int ZipCode { get; set; }
+        public int PreferredDistance { get; set; }
         public int ServiceProviderID { get; set; }
         public string ServiceProviderName { get; set; }
-        public int ClientID { get; set; }
-        public string ClientName { get; set; }
-        public int ServicesOfferedID { get; set; }
-        public string ServiceTypeName { get; set; }
         public DateTime ServiceDate { get; set; }
-        public string ServiceAddress { get; set; }
         [DataType(DataType.Currency)]
         public decimal ServiceFee { get; set; }
+
     }
 }
