@@ -87,3 +87,7 @@
     font-family: Calibri;
     font-weight:bold;
 }
+
+.confirmationPanel {
+    background-color: powderblue;
+ }

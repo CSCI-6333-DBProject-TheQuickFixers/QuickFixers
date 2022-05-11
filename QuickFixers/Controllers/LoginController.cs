@@ -128,6 +128,16 @@ namespace QuickFixers.Controllers
                 Session.Add("userid", selectedUser.Rows[0]["UserID"]);
                 Session.Add("userTypeID", selectedUser.Rows[0]["UserTypeID"]);
                 Session.Add("sessionGUID", Guid.NewGuid());
+                Session.Add("address", selectedUser.Rows[0]["Address"]);
+
+                if (Convert.ToInt16(Session["userTypeID"])  == 1)
+                {
+                    Session.Add("clientID", selectedUser.Rows[0]["ClientID"]);
+                }
+                else{
+                    Session.Add("serviceProviderID", selectedUser.Rows[0]["ServiceProviderID"]);
+                }
+
                 return true;
             }
             else

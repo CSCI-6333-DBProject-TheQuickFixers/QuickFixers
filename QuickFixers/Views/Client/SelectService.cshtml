@@ -39,8 +39,9 @@
     @foreach (var item in Model)
     {
     <tr>
-        <td>
-            @Html.ActionLink("Select", "SelectTEST", new { /* id=item.PrimaryKey */ })
+        <td> 
+            <input type="button" class="btn btn-default" value="Select"
+                   onclick="location.href='@Url.Action("Index", "Payment", new QuickFixers.Data.Models.Payment() { AmountDue = item.ServiceFee, ServiceProviderID = item.ServiceProviderID, ServicesOfferedID = item.ServiceOfferedID })'" />
         </td>
 
             <td>
