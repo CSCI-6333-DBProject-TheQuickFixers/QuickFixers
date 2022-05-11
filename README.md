@@ -1,7 +1,7 @@
 # QuickFixers - Class Project
 Current URL: http://web.quickfixers.link/
 > Web Application for Home Service Managment Hub. Request a service as a "Client" or provide a service as a "Service Provider"
-> Current Active URL [_here_](http://web.quickfixers.link/). (Server Inactive as of 5/14/22)
+> Current Active URL [_here_](http://web.quickfixers.link/). (Server Inactive as of 6/14/22)
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -58,7 +58,7 @@ Login with the newly create user to navivate the site.
 
 
 ## Project Status
-Project is: / _complete_ / - May 08, 2022.  
+Project is: / _complete_ / - May 10, 2022.  
 
 
 ## Room for Improvement
