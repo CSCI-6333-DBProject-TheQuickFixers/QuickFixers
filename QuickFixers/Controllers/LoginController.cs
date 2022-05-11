@@ -58,14 +58,7 @@ namespace QuickFixers.Controllers
                 {
                     CreateSession(selectedUser);
                     //Successful Login Redirect to ServiceProviderHome
-                    if ((int)Session["userTypeID"] == 2)
-                    {
-                        return RedirectToAction("Index", "ServiceProvider");
-                    }
-                    else 
-                    {
-                        return RedirectToAction("Index", "Client");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

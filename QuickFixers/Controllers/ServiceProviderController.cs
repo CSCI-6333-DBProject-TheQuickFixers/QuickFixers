@@ -15,30 +15,6 @@ namespace QuickFixers.Controllers
     public class ServiceProviderController : Controller
     {
         // GET: SP
-        public ActionResult Index()
-        {
-
-            DataTable selectedSP = DatabaseSelections.SelectSP((int)Session["userid"]);
-
-            if ((selectedSP != null) & (selectedSP.Rows.Count > 0))
-            {
-                Session.Add("ServiceProviderID", selectedSP.Rows[0]["ServiceProviderID"]);
-                Session.Add("PhoneNumber", selectedSP.Rows[0]["PhoneNumber"]);
-                Session.Add("Address", selectedSP.Rows[0]["Address"]);
-                Session.Add("PreferredDistance", selectedSP.Rows[0]["PreferredDistance"]);
-                Session.Add("ZipCode", selectedSP.Rows[0]["ZipCode"]);
-                Session.Add("ServiceProviderName", selectedSP.Rows[0]["ServiceProviderName"]);
-
-                ViewBag.Message = "Hello " + (string)Session["ServiceProviderName"] + "!";
-            }
-            else
-            {
-                ViewBag.Message = "Hello " + "(Error: Could Not Retrieve Name)! " + Session["userid"];
-                return View();
-            }
-
-            return View();
-        }
 
         public ActionResult WorkSchedule()
         {

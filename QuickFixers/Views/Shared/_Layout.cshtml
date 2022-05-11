@@ -55,7 +55,6 @@ Buttons related to usertype also are filtered.*@
 
                         @if ((Session.Keys.Count > 0) && (!String.IsNullOrEmpty(Convert.ToString(Session["UserTypeID"]))) && Convert.ToString(Session["UserTypeID"]) == "2")
                         {
-                            <li class="listItem">@Html.ActionLink("Main", "Index", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
                             <li class="listItem">@Html.ActionLink("Work Schedule", "WorkSchedule", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
                             <li class="listItem">@Html.ActionLink("Invoices", "Invoices", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
                             <li class="listItem">@Html.ActionLink("Services Offered", "ServicesOffered", "ServiceProvider", new { area = "" }, new { @class = "navbar-text-med" })</li>
