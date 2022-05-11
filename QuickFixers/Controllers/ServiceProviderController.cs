@@ -14,7 +14,7 @@ namespace QuickFixers.Controllers
 {
     public class ServiceProviderController : Controller
     {
-        // GET: SP
+  
 
         public ActionResult WorkSchedule()
         {
@@ -126,7 +126,6 @@ namespace QuickFixers.Controllers
                 return RedirectToAction("ErrorPage", "ServiceProvider");
             }
 
-            //return View();
         }
 
 
