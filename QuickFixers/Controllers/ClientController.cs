@@ -47,12 +47,8 @@ namespace QuickFixers.Controllers
         [HttpGet]
         public ActionResult SelectService(ServiceViewModel serviceViewModelPost)
         {
-
-            if (ModelState.IsValid)
-            {
-                List<Service> servicesFound = new List<Service>();
-
-                // searchService      
+                
+                // Populate values      
                 DayOfWeek daytest = serviceViewModelPost.SearchDate.DayOfWeek;
                 String serviceTime = serviceViewModelPost.SearchDate.ToString("HH:mm:ss");
                 Dictionary<string, string> spParameters = new Dictionary<string, string>();
@@ -70,6 +66,8 @@ namespace QuickFixers.Controllers
 
                 if ((selectedServices != null) & (selectedServices.Rows.Count > 0))
                 {
+                    List<Service> servicesFound = new List<Service>();
+
                     servicesFound = DatabaseSelections.ConvertToList<Service>(selectedServices);
                    
 
@@ -84,18 +82,20 @@ namespace QuickFixers.Controllers
                 
                     return View("Error");
                 }
-            }
-            else
-            {
-                return View("Error");
-            }
 
         }
 
         [HttpPost]
         public ActionResult Services(ServiceViewModel serviceViewModelPost)
         {
-            return RedirectToAction("SelectService", "Client", serviceViewModelPost);
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("SelectService", "Client", serviceViewModelPost);
+            }
+            else
+            {
+                return View("Error");
+            }      
         }
 
     }
