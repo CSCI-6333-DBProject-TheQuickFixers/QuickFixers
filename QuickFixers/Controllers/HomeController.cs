@@ -21,7 +21,32 @@ namespace QuickFixers.Controllers
 
             if ((Session.Keys.Count > 0) && (!string.IsNullOrEmpty(Session["sessionGUID"].ToString())))
             {
-                return View();//goes to logged in version
+                if ((int)Session["UserTypeID"] == 2)
+                {
+                    DataTable selectedSP = DatabaseSelections.SelectSP((int)Session["userid"]);
+
+                    if ((selectedSP != null) & (selectedSP.Rows.Count > 0))
+                    {
+                        Session.Add("ServiceProviderID", selectedSP.Rows[0]["ServiceProviderID"]);
+                        Session.Add("PhoneNumber", selectedSP.Rows[0]["PhoneNumber"]);
+                        Session.Add("Address", selectedSP.Rows[0]["Address"]);
+                        Session.Add("PreferredDistance", selectedSP.Rows[0]["PreferredDistance"]);
+                        Session.Add("ZipCode", selectedSP.Rows[0]["ZipCode"]);
+                        Session.Add("ServiceProviderName", selectedSP.Rows[0]["ServiceProviderName"]);
+
+                      
+                        return View();
+                    }
+                    else
+                    {
+                        
+                        return View();
+                    }
+                }
+                else
+                {
+                    return View();//goes to logged in version
+                }
             }
             else
             {

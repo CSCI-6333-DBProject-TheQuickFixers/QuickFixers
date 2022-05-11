@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Past Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string[] THeaders = new string[] { "ScheduledServiceID", "ServiceProviderID", "ClientID", "ServiceOfferedID", "ServiceDate", "ServiceAddress" };
+    string[] THeaders = new string[] {"Service Provider Name", "Client Name", "Service Type", "Service Fee", "Service Date", "Service Address" };
 }
 
 <h2>@ViewBag.Title</h2>
@@ -26,14 +26,14 @@
             {
                 foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
                 {
-                    <tr>
-                        <td>@DataTest["ScheduledServiceID"]</td>
-                        <td>@DataTest["ServiceProviderID"]</td>
-                        <td>@DataTest["ClientID"]</td>
-                        <td>@DataTest["ServiceOfferedID"]</td>
-                        <td>@DataTest["ServiceDate"]</td>
-                        <td>@DataTest["ServiceAddress"]</td>
-                    </tr>
+                <tr>
+                    <td>@DataTest["ServiceProviderName"]</td>
+                    <td>@DataTest["ClientName"]</td>
+                    <td>@DataTest["ServiceTypeName"]</td>
+                    <td>$@DataTest["ServiceFee"]</td>
+                    <td>@DataTest["ServiceDate"]</td>
+                    <td>@DataTest["ServiceAddress"]</td>
+                </tr>
                 }
             }
         }

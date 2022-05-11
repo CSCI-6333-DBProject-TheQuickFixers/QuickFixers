@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Services Offered";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string[] THeaders = new string[] { "ServiceTypeName", "ServiceFee (Dollars)" };
+    string[] THeaders = new string[] { "Service Type", "Service Fee" };
 }
 
 <h2>@ViewBag.Title</h2>
@@ -27,15 +27,29 @@
             {
                 foreach (System.Data.DataRow DataTest in Model.DbResults.Rows)
                 {
-                    <tr>
-                        <td>@DataTest["ServiceTypeName"]</td>
-                        <td>@DataTest["ServiceFee"]</td>
-                    </tr>
+
+                    using (Html.BeginForm("DeleteSPServiceOffered", "ServiceProvider", new { id = DataTest["ServiceOfferedID"] }, FormMethod.Post))
+                    {
+                        
+                        
+
+                                     <tr>
+                                         <td>@DataTest["ServiceTypeName"]</td>
+                                         <td>$@DataTest["ServiceFee"]</td>
+                                         <td>
+                                             <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete record with ID = @DataTest["ServiceOfferedID"]');" />
+                                         </td>
+                                     </tr>
+
+
+                        
+                    }
                 }
             }
-        }
+       }
         <tbody>
         </tbody>
     </table>
+    <p>@Html.ActionLink("Create New", "CreateSPServiceOffered")</p>
 </div>
 

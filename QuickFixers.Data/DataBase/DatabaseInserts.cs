@@ -113,9 +113,14 @@ namespace QuickFixers.Data.DataBase
         }
 
 
-        public static Int16 Insert(string sqlString, Dictionary<string, string> parameters, Dictionary<string, DbType> outParameters)
+
+
+
+
+        public static String  CreateNewWorkSchedule(int SPID, string WeekDay, string SPstart, string SPend, string TZ)
         {
-            Int16 sqlResults = 0;
+            String returnResults = String.Empty;
+
             try
             {
                 MySqlConnectionStringBuilder connectionStringBuilder = new MySqlConnectionStringBuilder();
@@ -123,38 +128,156 @@ namespace QuickFixers.Data.DataBase
 
                 using (var connectionDB = new MySqlConnection(connectionStringBuilder.ToString()))
                 {
-                    using (var sqlQuery = new MySqlCommand(sqlString, connectionDB))
+                    using (var sqlQuery = new MySqlCommand("quickFixers.CreateSPWorkSchedule", connectionDB))
                     {
                         sqlQuery.CommandType = CommandType.StoredProcedure;
-
-                        foreach(KeyValuePair<string, string> parameter in parameters)
-                        {
-                            sqlQuery.Parameters.AddWithValue($"{parameter.Key}", parameter.Value);
-                        }
-              
-                        foreach(KeyValuePair<string, DbType> parameter in outParameters)
-                        {
-                            sqlQuery.Parameters.Add(new MySqlParameter(parameter.Key, parameter.Value));
-                            sqlQuery.Parameters[parameter.Key].Direction = ParameterDirection.Output;
-                        }
+                        sqlQuery.Parameters.AddWithValue($"@SPID", SPID);
+                        sqlQuery.Parameters.AddWithValue($"@WeekDay", WeekDay);
+                        sqlQuery.Parameters.AddWithValue($"@SPstart", SPstart);
+                        sqlQuery.Parameters.AddWithValue($"@SPend", SPend);
+                        sqlQuery.Parameters.AddWithValue($"@TZ", TZ);
 
 
                         MySqlDataAdapter da = new MySqlDataAdapter();
                         connectionDB.Open();
                         sqlQuery.ExecuteNonQuery();
                         connectionDB.Close();
-                        return sqlResults = sqlQuery.Parameters.Contains("Success") ? (Int16)sqlQuery.Parameters["@Success"].Value : (Int16)1;
+                        returnResults = "Success";
                     }
                 }
 
             }
             catch (Exception ex)
             {
-                sqlResults = 0;
+                returnResults = "Failure";
                 Console.WriteLine(ex.ToString());
             }
-            return sqlResults;
+            return returnResults;
         }
 
+
+
+
+
+
+
+
+        public static String DeleteWorkSchedule(int AvailabilityID)
+        {
+            String returnResults = String.Empty;
+
+            try
+            {
+                MySqlConnectionStringBuilder connectionStringBuilder = new MySqlConnectionStringBuilder();
+                connectionStringBuilder = DatabaseExtensions.ToConnectionStringBuilder(connectionStringBuilder);
+
+                using (var connectionDB = new MySqlConnection(connectionStringBuilder.ToString()))
+                {
+                    using (var sqlQuery = new MySqlCommand("quickFixers.DeleteSPWorkSchedule", connectionDB))
+                    {
+                        sqlQuery.CommandType = CommandType.StoredProcedure;
+                        sqlQuery.Parameters.AddWithValue($"@AvailID", AvailabilityID);
+;
+
+                        MySqlDataAdapter da = new MySqlDataAdapter();
+                        connectionDB.Open();
+                        sqlQuery.ExecuteNonQuery();
+                        connectionDB.Close();
+                        returnResults = "Success";
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                returnResults = "Failure";
+                Console.WriteLine(ex.ToString());
+            }
+            return returnResults;
+        }
+
+
+
+
+
+
+        public static String CreateNewServiceOffered(int SPID, int STID, decimal ServFee)
+        {
+            String returnResults = String.Empty;
+
+            try
+            {
+                MySqlConnectionStringBuilder connectionStringBuilder = new MySqlConnectionStringBuilder();
+                connectionStringBuilder = DatabaseExtensions.ToConnectionStringBuilder(connectionStringBuilder);
+
+                using (var connectionDB = new MySqlConnection(connectionStringBuilder.ToString()))
+                {
+                    using (var sqlQuery = new MySqlCommand("quickFixers.CreateSPServicesOffered", connectionDB))
+                    {
+                        sqlQuery.CommandType = CommandType.StoredProcedure;
+                        sqlQuery.Parameters.AddWithValue($"@SPID", SPID);
+                        sqlQuery.Parameters.AddWithValue($"@STID", STID);
+                        sqlQuery.Parameters.AddWithValue($"@ServFee", ServFee);
+       
+                        MySqlDataAdapter da = new MySqlDataAdapter();
+                        connectionDB.Open();
+                        sqlQuery.ExecuteNonQuery();
+                        connectionDB.Close();
+                        returnResults = "Success";
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                returnResults = "Failure";
+                Console.WriteLine(ex.ToString());
+            }
+            return returnResults;
+        }
+
+
+
+
+
+        public static String DeleteServiceOffered(int ServiceOfferedID)
+        {
+            String returnResults = String.Empty;
+
+            try
+            {
+                MySqlConnectionStringBuilder connectionStringBuilder = new MySqlConnectionStringBuilder();
+                connectionStringBuilder = DatabaseExtensions.ToConnectionStringBuilder(connectionStringBuilder);
+
+                using (var connectionDB = new MySqlConnection(connectionStringBuilder.ToString()))
+                {
+                    using (var sqlQuery = new MySqlCommand("quickFixers.DeleteSPServicesOffered", connectionDB))
+                    {
+                        sqlQuery.CommandType = CommandType.StoredProcedure;
+                        sqlQuery.Parameters.AddWithValue($"@SOID", ServiceOfferedID);
+                        ;
+
+                        MySqlDataAdapter da = new MySqlDataAdapter();
+                        connectionDB.Open();
+                        sqlQuery.ExecuteNonQuery();
+                        connectionDB.Close();
+                        returnResults = "Success";
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                returnResults = "Failure";
+                Console.WriteLine(ex.ToString());
+            }
+            return returnResults;
+        }
+
+
+
+
+
     }
+
 }
