@@ -22,6 +22,20 @@ namespace QuickFixers.Models
 
         public decimal AmountDue { get; set;  }
 
+        public int ScheduledServiceID { get; set; }
+
+        public int ServiceProviderID { get; set; }
+
+        public int ClientID { get; set; }
+
+        public int ServiceOfferredID { get; set; }
+
+        public DateTime ServiceDate { get; set; }
+
+        public string ServiceAddress { get; set; }
+
+        public decimal ServiceFee { get; set; }
+
         [Required]     
         public decimal PaymentAmount { get; set; }
 

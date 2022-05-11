@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuickFixers.Data.Models
 {
-    public class Payment
+    public class Payment : ScheduledService
     {
         #region Properties
         protected static readonly List<int> _expirationMonth = new List<int> {1,2,3,4,5,6,7,8,9,10,11,12};
@@ -31,11 +31,27 @@ namespace QuickFixers.Data.Models
                 return result; 
             }
         }
+
+        public int PaymentID { get; set; }
+
         public decimal PaymentAmount { get; set; }
+
         public decimal AmountDue { get; set; }
+
         public string CardNumber { get; set; }  
+
         public int ExpirationMonthPayment { get; set;}
+
         public int ExpirationYearPayment { get; set; }
+
+        public Boolean IsApproved { get; set; }
+
+        public DateTime PaymentDate { get; set; }
+
+        public int InvoiceID { get; set; }
+
+        public decimal ServiceFee { get; set; }
+
         public DateTime ExpirationDate
         {
             get
