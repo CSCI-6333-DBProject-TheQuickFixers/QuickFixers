@@ -19,11 +19,6 @@ namespace QuickFixers.Controllers
         }
 
         // GET: Client
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult Services()
         {
 
