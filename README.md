@@ -38,19 +38,25 @@ List the ready features here:
 - Invoice a completed service.
 - View Scheduled Services.
 - View Past Services.
+- Search for a Service Provider.
+- Make/View a payment confirmation to a service (test credit card with valid expiration date only).
 
 
 ## Screenshots
-![HomePage](![image](https://user-images.githubusercontent.com/26256313/167307815-8c774850-9baa-4990-856a-acf37b7fe190.png))
-![Registration - Client](![image](https://user-images.githubusercontent.com/26256313/167307831-b6d86026-554d-43a2-a949-6d94a6da2c4e.png))
-![Registration(Mobile) - Service Provider](![image](https://user-images.githubusercontent.com/26256313/167307899-05883149-fbcd-42b8-b895-4ea2302d7be1.png))
+![image](https://user-images.githubusercontent.com/26256313/168449264-e7e3c442-b101-4425-8398-5b23fbee6266.png)
+
+![image](https://user-images.githubusercontent.com/26256313/168449282-b2c2731b-4cb9-4682-b1b8-ed3410869ceb.png)
+
+
+![image](https://user-images.githubusercontent.com/26256313/168449381-e0b8c913-f76f-4d83-9174-2f49b5081bb6.png)
 
 ## Setup
 - .Net Framework 4.7.2
 - Visual Studios
 - GitHub Extension for VS
 - MySQL WorkBench
-
+- Database Creation Scripts in MySQL Workbench
+- Online Environment to host live database.
 
 ## Usage 
 Register as a Service Provider or Client.
@@ -58,7 +64,7 @@ Login with the newly create user to navivate the site.
 
 
 ## Project Status
-Project is: / _complete_ / - May 10, 2022.  
+Project is: Complete - May 10, 2022.  
 
 
 ## Room for Improvement
@@ -67,9 +73,8 @@ Room for improvement:
 - Additional Unit Test Cases.
 - Improved CSS on Sites.
 - More Updating and Deleting existing data.
-
-To do:
-- Rating services after completion.
+- Ratings System.
+- Update/Deletion of Users.
 
 ## Acknowledgements
 -  zapper117
